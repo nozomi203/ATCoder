@@ -24,6 +24,8 @@ int main()
     }
 
     for (int i = 1; i < N; i++){
-
+        for (int j = 0; j < w[i]; j++){
+            if(value[i][j])
+        }
     }
 }
