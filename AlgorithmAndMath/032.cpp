@@ -11,4 +11,12 @@ int main()
 {
     s64 N, X;
     cin >> N >> X;
+    vector<s64> A(N);
+    for (s64 n = 0; n < N; ++n)
+    {
+        cin >> A[n];
+    }
+    sort(A.begin(), A.end());
+    const auto XItr = std::lower_bound(A.begin(), A.end(), X);
+    cout << (XItr != A.end() && *XItr == X ? "Yes" : "No") << endl;
 }
