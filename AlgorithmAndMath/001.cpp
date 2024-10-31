@@ -9,4 +9,7 @@ using namespace std;
 
 int main()
 {
+    s32 N;
+    cin >> N;
+    cout << 5 + N << endl;
 }
