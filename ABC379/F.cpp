@@ -13,4 +13,4 @@ int main()
     s64 N, Q;
     cin >> N >> Q;
 
-}
+}           
