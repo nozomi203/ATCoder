@@ -1,7 +1,10 @@
 #include "util/binary_op.h"
 
+#include <cassert>
 #include <iostream>
 
+#include "util/test.h"
+
 int main() {
-    std::cout << util::binary_ceil<uint32_t>(9) << std::endl;
+    TEST(util::binary_ceil<uint32_t>(9), 16);
 }
