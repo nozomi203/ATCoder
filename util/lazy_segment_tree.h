@@ -39,14 +39,38 @@ class lazy_segment_tree {
     const auto buff_idx_r = idx_r + m_n;  // buffer index starts at 1
     const auto depth_max_l = m_depth_max - std::countr_zero(buff_idx_l);
     const auto depth_max_r = m_depth_max - std::countr_zero(buff_idx_r);
+    uint32_t mask = 1 << m_depth_max;
+    uint32_t curr_buff_idx_l = 1;
+    uint32_t curr_buff_idx_r = 1;
+    uint32_t curr_depth = 0;
+    while (mask > 1 && curr_buff_idx_l == curr_buff_idx_r) {
+      if (m_lazy[curr_buff_idx_l - 1]) {
+        const auto val = *m_lazy[curr_buff_idx_l - 1];
+        m_buffer[curr_buff_idx_l - 1] =
+            m_op(m_buffer[curr_buff_idx_l - 1], val);
+        m_lazy[curr_buff_idx_l - 1] = std::nullopt;
+        if (curr_depth + 1 < m_depth_max) {
+          m_lazy[curr_buff_idx_l * 2 - 1] = val;
+          m_lazy[curr_buff_idx_l * 2 + 0] = val;
+        }
+      }
+      ++curr_depth;
+      mask >>= 1;
+      curr_buff_idx_l <<= 1;
+      if (buff_idx_l & mask) {
+        ++curr_buff_idx_l;
+      }
+      curr_buff_idx_r <<= 1;
+      if (buff_idx_r & mask) {
+        ++curr_buff_idx_r;
+      }
+    }
     uint32_t depth = 0;
     uint32_t curr_buff_idx_l = 1;
     uint32_t curr_buff_idx_r = 1;
     while (curr_buff_idx_l == curr_buff_idx_r) {
-      curr_buff_idx_l >>
     }
-    uint32_t mask = 1 << m_depth_max;
-    while () idx_l += m_n;
+    idx_l += m_n;
     idx_r += m_n;
     idx_l >>= std::countr_zero(idx_l);
     idx_r >>= std::countr_zero(idx_r);
