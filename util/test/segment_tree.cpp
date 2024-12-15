@@ -8,13 +8,13 @@
 #include "util/test.h"
 
 int main() {
-  util::segment_tree<uint32_t> st(
-      4, std::numeric_limits<uint32_t>::lowest(),
-      [](auto l, auto r) { return std::max(l, r); });
-  TEST(st.buffer_size(), 7);
-  TEST(st.leaf_size(), 4);
-  st.update(0, 10);
-  st.update(3, 15);
+  // 区間取得関数
+  using S = uint32_t;
+  constexpr auto kSIdentity = std::numeric_limits<S>::lowest();
+  constexpr auto kOpFunc = [](S l, S r) -> S { return std::max(l, r); };
+  util::segment_tree<S, kSIdentity, kOpFunc> st(4);
+  st.apply(0, 10);
+  st.apply(3, 15);
   TEST(st.query(0, 4), 15);
   TEST(st.query(0, 3), 10);
   TEST(st.query(0, 2), 10);
