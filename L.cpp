@@ -39,7 +39,7 @@ int main() {
     return l || r;
   };
 
-  util::lazy_segment_tree<S, kSIdentity, F, kFIdentity, kOpFunc, kMappingFunc,
+  util::lazy_segment_tree<S, F, kSIdentity, kFIdentity, kOpFunc, kMappingFunc,
                           kCompositionFunc>
       lst(values);
 
