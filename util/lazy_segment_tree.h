@@ -12,8 +12,8 @@
 #include "util/concepts.h"
 
 namespace util {
-template <class S, class F, S SIdentity, F FIdentity, auto OpFunc,
-          auto MappingFunc, auto CompositionFunc>
+template <class S, class F, S SIdentity, auto OpFunc, auto MappingFunc,
+          auto CompositionFunc>
 class lazy_segment_tree {
   static_assert(
       std::is_convertible_v<decltype(OpFunc), std::function<S(S, S)>>);
@@ -24,11 +24,15 @@ class lazy_segment_tree {
 
  public:
   lazy_segment_tree(size_t n) : lazy_segment_tree(std::vector(n, SIdentity)) {}
+  lazy_segment_tree(size_t n, S&& value)
+      : lazy_segment_tree(std::vector(n, value)) {}
+  lazy_segment_tree(size_t n, const S& value)
+      : lazy_segment_tree(std::vector(n, value)) {}
   lazy_segment_tree(const std::vector<S>& values)
       : m_n(values.size()),
         m_depth_max(std::countr_zero(bit_ceil(values.size()))),
         m_data((bit_ceil(values.size()) << 1)),
-        m_lazy(bit_ceil(values.size()), FIdentity) {
+        m_lazy(bit_ceil(values.size()), std::nullopt) {
     for (size_t i = 0; i < values.size(); ++i) {
       m_data[m_n + i] = values[i];
     }
@@ -89,14 +93,17 @@ class lazy_segment_tree {
 
  private:
   void distribute_lazy(size_t data_idx) {
-    apply(data_idx * 2 + 0, m_lazy[data_idx]);
-    apply(data_idx * 2 + 1, m_lazy[data_idx]);
-    m_lazy[data_idx] = FIdentity;
+    if (m_lazy[data_idx]) {
+      apply(data_idx * 2 + 0, *m_lazy[data_idx]);
+      apply(data_idx * 2 + 1, *m_lazy[data_idx]);
+      m_lazy[data_idx] = std::nullopt;
+    }
   }
   void apply(size_t data_idx, F f) {
     m_data[data_idx] = MappingFunc(f, m_data[data_idx]);
     if (data_idx < m_n) {
-      m_lazy[data_idx] = CompositionFunc(f, m_lazy[data_idx]);
+      m_lazy[data_idx] =
+          m_lazy[data_idx] ? CompositionFunc(f, *m_lazy[data_idx]) : f;
     }
   }
   void collect_data(size_t data_idx) {
@@ -108,6 +115,6 @@ class lazy_segment_tree {
   size_t m_n;            // 要素数
   uint32_t m_depth_max;  // 木の最大深度
   std::vector<S> m_data;
-  std::vector<F> m_lazy;
+  std::vector<std::optional<F>> m_lazy;
 };
 }  // namespace util
