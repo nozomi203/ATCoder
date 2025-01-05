@@ -1,44 +1,65 @@
 #include "util/common.h"
-
-s64 get_count(s64 front, s64 digit, const string& l, const string& r, bool b) {}
+#include "util/digit.h"
 
 s64 powi(s64 x, s64 y) {
   if (y == 1) return x;
   return x * pow(x, y - 1);
 }
 
-int main() {
-  string L, R;
-  cin >> L >> R;
-
-  vector<s64> values_l(R.size(), 0), values_r(R.size(), 0);
-  for (s64 i = 0; i < R.size(); ++i) {
-    values_r[i] = R[R.size() - 1 - i] - '0';
+vector<s64> itovec(s64 i) {
+  vector<s64> ret;
+  while (i > 0) {
+    s64 d = i % 10;
+    i /= 10;
+    ret.push_back(d);
   }
-  for (s64 i = 0; i < L.size(); ++i) {
-    values_l[i] = L[L.size() - 1 - i] - '0';
+  std::reverse(ret.begin(), ret.end());
+  return ret;
+}
+
+bool is_snake_num(u64 num) {
+  const auto max_digit = util::get_max_digit(num);
+  if (max_digit < 1) return false;
+  const auto front = util::get_value_at(num, max_digit);
+  for (auto digit = max_digit - 1; digit >= 0; --digit) {
+    if (util::get_value_at(num, digit) >= front) return false;
   }
+  return true;
+}
 
-  s64 ans{0};
-  // i桁目が先頭の場合を列挙
-  for (s64 i = R.size() - 1; i >= 1; --i) {
-    const s64 front_l = values_l[i];
-    const s64 front_r = values_r[i];
-    const s64 diff = front_r - front_l;
-
-    // front = 先頭の数(1以上)
-    for (s64 front = max(front_l, 1LL); front <= front_r; ++front) {
-      ans += powi(front, i);  // number ignoring limit
-      // 条件に合わないものを切り落とす
-      for (s64 j = i; j >= 1; --j) {
-        const s64 l = values_l[j - 1];
-        const s64 r = values_r[j - 1];
-        const s64 n = std::max(0LL, (front - 1LL) - r) +
-                      std::max(0LL, (front - 1LL) - l) + l;
-        ans -= n * powi(front, j - 1);
-      }
+/// @brief get count of snake number less than equal {max}
+/// @param max
+/// @return
+u64 get_snake_num_count(u64 max) {
+  u64 ans{0};
+  // snake_num == max
+  if (is_snake_num(max)) ++ans;
+  // 先頭i桁が一致
+  const auto max_digit = util::get_max_digit(max);
+  const auto front = util::get_value_at(max, max_digit);
+  for (u64 i = max_digit; i >= 0; --i) {
+    const auto v = util::get_value_at(max, i);
+    if (i < max_digit && v >= front) break;
+    ans += std::min(v, front) * powi(front, i);
+  }
+  // 先頭が小さい
+  for (u64 i = 1; i < front; ++i) {
+    ans += powi(i, max_digit);
+  }
+  // 桁が小さい
+  for (u64 digit = max_digit - 1; digit >= 1; --digit) {
+    for (u64 i = 1; i <= 9; ++i) {
+      ans += powi(i, digit);
     }
   }
 
+  return ans;
+}
+
+int main() {
+  u64 L, R;
+  cin >> L >> R;
+
+  u64 ans = get_snake_num_count(R) - get_snake_num_count(L - 1);
   cout << ans << endl;
 }
