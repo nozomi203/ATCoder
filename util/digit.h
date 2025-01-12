@@ -19,8 +19,10 @@ inline constexpr UInt get_max_digit(UInt value) {
 
 template <std::unsigned_integral UInt>
 inline constexpr UInt get_value_at(UInt value, UInt digit) {
-  assert(digit < sizeof(UInt) * CHAR_BIT);
-  return (value & (1 << digit)) >> digit;
+  for (s64 d = digit; d > 0; --d) {
+    value /= 10;
+  }
+  return value % 10;
 }
 
 }  // namespace util

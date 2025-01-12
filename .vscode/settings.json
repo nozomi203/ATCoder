@@ -120,7 +120,8 @@
         "cassert": "cpp",
         "generator": "cpp",
         "print": "cpp",
-        "text_encoding": "cpp"
+        "text_encoding": "cpp",
+        "lazysegtree": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "Google",
     "C_Cpp.formatting": "clangFormat"

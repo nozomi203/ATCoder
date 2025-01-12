@@ -8,7 +8,7 @@
 #include <stack>
 #include <vector>
 
-#include "util/bit_op.h"
+#include "util/bit.h"
 #include "util/concepts.h"
 
 namespace util {

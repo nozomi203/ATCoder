@@ -6,23 +6,22 @@ s64 powi(s64 x, s64 y) {
   return x * pow(x, y - 1);
 }
 
-vector<s64> itovec(s64 i) {
+vector<s64> int_to_vec(s64 i) {
   vector<s64> ret;
   while (i > 0) {
-    s64 d = i % 10;
+    ret.push_back(i % 10);
     i /= 10;
-    ret.push_back(d);
   }
   std::reverse(ret.begin(), ret.end());
   return ret;
 }
 
-bool is_snake_num(u64 num) {
-  const auto max_digit = util::get_max_digit(num);
+bool is_snake_num(const vector<s64>& vec) {
+  const auto max_digit = vec.size() - 1;
   if (max_digit < 1) return false;
-  const auto front = util::get_value_at(num, max_digit);
-  for (auto digit = max_digit - 1; digit >= 0; --digit) {
-    if (util::get_value_at(num, digit) >= front) return false;
+  const auto front = vec[max_digit];
+  for (s64 digit = max_digit - 1; digit >= 0; --digit) {
+    if (vec[digit] >= front) return false;
   }
   return true;
 }
@@ -30,17 +29,17 @@ bool is_snake_num(u64 num) {
 /// @brief get count of snake number less than equal {max}
 /// @param max
 /// @return
-u64 get_snake_num_count(u64 max) {
+u64 get_snake_num_count(const vector<s64>& vec) {
   u64 ans{0};
   // snake_num == max
-  if (is_snake_num(max)) ++ans;
+  if (is_snake_num(vec)) ++ans;
   // 先頭i桁が一致
-  const auto max_digit = util::get_max_digit(max);
-  const auto front = util::get_value_at(max, max_digit);
-  for (u64 i = max_digit; i >= 0; --i) {
-    const auto v = util::get_value_at(max, i);
+  const auto max_digit = vec.size() - 1;
+  const auto front = vec[max_digit];
+  for (s64 i = max_digit; i >= 1; --i) {
+    const auto v = vec[i];
     if (i < max_digit && v >= front) break;
-    ans += std::min(v, front) * powi(front, i);
+    ans += std::min(vec[i - 1], front) * powi(front, i - 1);
   }
   // 先頭が小さい
   for (u64 i = 1; i < front; ++i) {
@@ -60,6 +59,8 @@ int main() {
   u64 L, R;
   cin >> L >> R;
 
-  u64 ans = get_snake_num_count(R) - get_snake_num_count(L - 1);
+  vector<s64> vec_l(int_to_vec(L - 1)), vec_r(int_to_vec(R));
+
+  u64 ans = get_snake_num_count(vec_r) - get_snake_num_count(vec_l);
   cout << ans << endl;
 }
