@@ -4,22 +4,18 @@ int main() {
   s64 N;
   cin >> N;
   vector<s64> A(N);
-  vector<bool> used(N, false);
   for (s64 i = 0; i < N; ++i) {
     cin >> A[i];
   }
 
-  s64 ans{0};
-  s64 idx_r{1};
-  for (s64 idx_l = 0; idx_l < N - 1; ++idx_l) {
-    if (used[idx_l]) continue;
-    if (idx_l == idx_r) ++idx_r;
-    while (idx_r < N && (A[idx_l] * 2 > A[idx_r] || used[idx_r])) ++idx_r;
-    if (idx_r == N) break;
+  for (s64 i{0}, j{0}, d{0}; i < N; ++i) {
+    while (j < N && A[i] * 2 > A[j]) ++j;
 
-    ++ans;
-    used[idx_r] = true;
+    d = std::max(d, j - i);
+
+    if (i + max(d, i + 1) >= N) {
+      cout << i << endl;
+      return 0;
+    }
   }
-
-  cout << ans << endl;
 }

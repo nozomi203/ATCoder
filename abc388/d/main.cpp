@@ -1,7 +1,33 @@
 #include "util/common.h"
 #include "util/lazy_segment_tree.h"
 
-int main() {
+int main_imos() {
+  s64 N;
+  cin >> N;
+  vector<s64> A(N), diffs(N, 0);
+  for (s64 i = 0; i < N; ++i) {
+    cin >> A[i];
+  }
+
+  for (s64 i = 0; i < N; ++i) {
+    if (i > 0) diffs[i] += diffs[i - 1];
+    A[i] += diffs[i];
+    const s64 drop_count = min(A[i], N - i - 1);
+    A[i] -= drop_count;
+    if (drop_count > 0) {
+      diffs[i + 1] += 1;
+      diffs[i + 1 + drop_count] -= 1;
+    }
+
+    cout << A[i];
+    if (i < N - 1) cout << " ";
+  }
+  cout << endl;
+
+  return 0;
+}
+
+int main_lst() {
   s64 N;
   cin >> N;
   vector<s64> A(N);
@@ -35,4 +61,8 @@ int main() {
     if (i < N - 1) cout << " ";
   }
   cout << endl;
+
+  return 0;
 }
+
+int main() { return main_imos(); }
