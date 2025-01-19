@@ -7,7 +7,7 @@
 #include <iostream>
 #include <vector>
 
-#include "util/bit_op.h"
+#include "util/bit.h"
 
 namespace util {
 

@@ -1,4 +1,4 @@
-#line 1 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\common.h"
+#line 1 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\common.h"
 #include <bits/stdc++.h>
 
 using s32 = int32_t;
@@ -7,17 +7,17 @@ using s64 = int64_t;
 using u64 = uint64_t;
 
 using namespace std;
-#line 1 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\lazy_segment_tree.h"
+#line 1 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\lazy_segment_tree.h"
 #include <bit>
-#line 3 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\lazy_segment_tree.h"
+#line 3 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\lazy_segment_tree.h"
 #include <concepts>
-#line 7 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\lazy_segment_tree.h"
+#line 7 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\lazy_segment_tree.h"
 #include <optional>
-#line 10 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\lazy_segment_tree.h"
+#line 10 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\lazy_segment_tree.h"
 
-#line 2 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\bit.h"
+#line 2 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\bit.h"
 
-#line 5 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\bit.h"
+#line 5 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\bit.h"
 #include <type_traits>
 
 namespace util {
@@ -67,7 +67,7 @@ constexpr uint64_t bit_reverse(uint64_t v) {
 }
 
 }  // namespace util
-#line 2 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\concepts.h"
+#line 2 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\concepts.h"
 
 namespace util::concepts {
 
@@ -77,7 +77,7 @@ concept Function = requires(T func, TArgs... args) {
 };
 
 }  // namespace util
-#line 13 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\lazy_segment_tree.h"
+#line 13 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\lazy_segment_tree.h"
 
 namespace util {
 template <class S, class F, S SIdentity, auto OpFunc, auto MappingFunc,
@@ -188,7 +188,33 @@ class lazy_segment_tree {
 }  // namespace util
 #line 3 "main.cpp"
 
-int main() {
+int main_imos() {
+  s64 N;
+  cin >> N;
+  vector<s64> A(N), diffs(N, 0);
+  for (s64 i = 0; i < N; ++i) {
+    cin >> A[i];
+  }
+
+  for (s64 i = 0; i < N; ++i) {
+    if (i > 0) diffs[i] += diffs[i - 1];
+    A[i] += diffs[i];
+    const s64 drop_count = min(A[i], N - i - 1);
+    A[i] -= drop_count;
+    if (drop_count > 0) {
+      diffs[i + 1] += 1;
+      diffs[i + 1 + drop_count] -= 1;
+    }
+
+    cout << A[i];
+    if (i < N - 1) cout << " ";
+  }
+  cout << endl;
+
+  return 0;
+}
+
+int main_lst() {
   s64 N;
   cin >> N;
   vector<s64> A(N);
@@ -222,4 +248,8 @@ int main() {
     if (i < N - 1) cout << " ";
   }
   cout << endl;
+
+  return 0;
 }
+
+int main() { return main_imos(); }
