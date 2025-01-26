@@ -1,4 +1,4 @@
-#line 2 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\binary_search.h"
+#line 2 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\binary_search.h"
 #include <cmath>
 #include <concepts>
 #include <functional>
@@ -15,7 +15,7 @@ inline std::pair<Int, Int> binary_search(Int ok, Int ng,
   return {ok, ng};
 }
 }  // namespace util
-#line 1 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\common.h"
+#line 1 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\common.h"
 #include <bits/stdc++.h>
 
 using s32 = int32_t;
@@ -35,28 +35,38 @@ int main() {
   const auto get_num = [&](s64 value) -> s64 {
     s64 num{0};
     for (s64 i = 0; i < N; ++i) {
-      num += (value + P[i]) / (2 * P[i]);
+      num += (value + P[i]) / (2LL * P[i]);
     }
     return num;
   };
   const auto get_sum = [&](s64 value) -> s64 {
     s64 sum{0};
     for (s64 i = 0; i < N; ++i) {
-      s64 num = (value + P[i]) / (2 * P[i]);
+      s64 num = (value + P[i]) / (2LL * P[i]);
       sum += P[i] * num * num;
     }
     return sum;
   };
+  const auto check_sum = [&](s64 value) -> s64 {
+    s64 sum{0};
+    for (s64 i = 0; i < N; ++i) {
+      s64 num = (value + P[i]) / (2LL * P[i]);
+      if (sqrt(P[i]) * num > sqrt(M)) return false;
+      sum += P[i] * num * num;
+      if (sum > M) return false;
+    }
+    return true;
+  };
 
   auto [ok, ng] = util::binary_search<s64>(
-      0, M + 1, [&](auto value) -> bool { return get_sum(value) <= M; });
+      0, M + 1, [&](auto value) -> bool { return check_sum(value); });
 
   s64 ans = get_num(ok);
   s64 sum = get_sum(ok);
   for (s64 i = 0; i < N; ++i) {
     if (sum + ok + 1 > M) break;
     if ((ok + 1 + P[i]) % (2 * P[i]) == 0) {
-      sum += P[i] * (ok + 1);
+      sum += ok + 1;
       ++ans;
     }
   }

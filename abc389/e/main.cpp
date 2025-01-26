@@ -22,16 +22,26 @@ int main() {
     }
     return sum;
   };
+  const auto check_sum = [&](s64 value) -> s64 {
+    s64 sum{0};
+    for (s64 i = 0; i < N; ++i) {
+      s64 num = (value + P[i]) / (2LL * P[i]);
+      if (sqrt(P[i]) * num > sqrt(M)) return false;
+      sum += P[i] * num * num;
+      if (sum > M) return false;
+    }
+    return true;
+  };
 
   auto [ok, ng] = util::binary_search<s64>(
-      0, M + 1, [&](auto value) -> bool { return get_sum(value) <= M; });
+      0, M + 1, [&](auto value) -> bool { return check_sum(value); });
 
   s64 ans = get_num(ok);
   s64 sum = get_sum(ok);
   for (s64 i = 0; i < N; ++i) {
     if (sum + ok + 1 > M) break;
     if ((ok + 1 + P[i]) % (2 * P[i]) == 0) {
-      sum += P[i] * (ok + 1);
+      sum += ok + 1;
       ++ans;
     }
   }
