@@ -1,3 +1,5 @@
+#include <iostream>
+
 #define TEST(op, expected)                                \
   if (op == expected) {                                   \
     std::cout << "(" << #op << " == " << #expected        \
