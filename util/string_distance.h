@@ -7,26 +7,38 @@
 namespace util {
 uint64_t string_distance(
     const std::string& l, const std::string& r,
-    uint64_t dist_max = std::numeric_limits<uint64_t>::max()) {
-  std::vector<uint64_t> curr(r.size() + 1),
-      prev(r.size() + 1, std::numeric_limits<uint64_t>::max());
-  for (uint64_t i = 0; i < r.size(); ++i) curr[i] = i;
+    uint64_t dist_max = std::numeric_limits<uint64_t>::max() - 1) {
+  if (l.size() > r.size()) return string_distance(r, l, dist_max);
+  dist_max = min(dist_max, r.size());
+  std::vector<std::vector<uint64_t>> dp(
+      l.size() + 1, std::vector<uint64_t>(dist_max * 2 + 3,
+                                          numeric_limits<uint64_t>::max() - 1));
+  for (uint64_t i = 0; i <= min(dist_max, r.size()); ++i) {
+    dp[0][dist_max + 1 + i] = i;
+  }
+  for (uint64_t i = 1; i <= min(dist_max, l.size()); ++i) {
+    dp[i][dist_max + 1 - i] = i;
+  }
 
-  for (uint64_t i = 1; i <= l.size(); ++i) {
-    prev.swap(curr);
-    curr[0] = i;
-
-    const uint64_t j_b = i - 1 < dist_max ? 1 : i - dist_max;
-
-    for (uint64_t j = 1; j <= r.size(); ++j) {
+  for (int64_t i = 1; i <= l.size(); ++i) {
+    const auto j_b = i - 1 > dist_max ? i - dist_max : 1;
+    const auto j_e = r.size() - i > dist_max ? i + dist_max : r.size();
+    for (uint64_t j = j_b; j <= j_e; ++j) {
+      const int64_t curr_offset = dist_max + 1 - i;
+      const int64_t prev_offset = dist_max + 1 - i + 1;
       if (l[i - 1] == r[j - 1]) {
-        curr[j] = std::min(prev[j - 1], std::min(prev[j] + 1, curr[j - 1] + 1));
+        dp[i][j + curr_offset] =
+            std::min(dp[i - 1][j - 1 + prev_offset],
+                     std::min(dp[i - 1][j + prev_offset] + 1,
+                              dp[i][j - 1 + curr_offset] + 1));
       } else {
-        curr[j] =
-            std::min(prev[j] + 1, std::min(curr[j - 1] + 1, prev[j - 1] + 1));
+        dp[i][j + curr_offset] =
+            std::min(dp[i - 1][j - 1 + prev_offset] + 1,
+                     std::min(dp[i - 1][j + prev_offset] + 1,
+                              dp[i][j - 1 + curr_offset] + 1));
       }
     }
   }
-  return curr[r.size()];
+  return dp[l.size()][r.size() + dist_max + 1 - l.size()];
 }
 }  // namespace util
