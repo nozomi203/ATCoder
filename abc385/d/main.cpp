@@ -50,5 +50,5 @@ int main() {
     }
   }
 
-  cout << format("{} {} {}", sx, sy, ans) << endl;
+  cout << sx << " " << sy << " " << ans << endl;
 }

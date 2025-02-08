@@ -1,37 +1,67 @@
 #include "util/common.h"
-#include "util/segment_tree.h"
 
 int main() {
-  s64 N, M;
+  u32 N, M;
   cin >> N >> M;
 
-  using S = s64;
-  constexpr S maximum = numeric_limits<S>::max();
-  constexpr auto get_min = [](S l, S r) -> S { return min(l, r); };
-
-  util::segment_tree<S, maximum, get_min> wxmin(N), wymin(N);
-  vector<pair<s64, s64>> bpos;
-  for (s64 i = 0; i < M; ++i) {
-    s64 X, Y;
-    char C;
-    cin >> X >> Y >> C;
-    --X;
-    --Y;
-    if (C == 'B') {
-      bpos.emplace_back(make_pair(X, Y));
-    } else {
-      wxmin.apply(Y, X);
-      wymin.apply(X, Y);
-    }
+  struct pos {
+    u32 x{0};
+    u32 y{0};
+    char c{0};
+  };
+  vector<pos> positions(M, pos{});
+  for (u32 i = 0; i < M; ++i) {
+    cin >> positions[i].x;
+    cin >> positions[i].y;
+    cin >> positions[i].c;
   }
 
-  const auto check = [&]() -> bool {
-    for (auto [bx, by] : bpos) {
-      if (wxmin.query(0, by + 1) <= bx) return false;
-      if (wymin.query(0, bx + 1) <= by) return false;
+  const auto check_x = [&]() -> bool {
+    // sort positions in ascendant order of x. white comes first if x is same.
+    std::sort(positions.begin(), positions.end(),
+              [](const pos& l, const pos& r) -> bool {
+                if (l.x == r.x) {
+                  return l.c == 'W';
+                }
+                return l.x < r.x;
+              });
+
+    u32 minwy{numeric_limits<u32>::max()};
+    for (const auto& pos : positions) {
+      if (pos.c == 'W') {
+        minwy = min(minwy, pos.y);
+      } else {
+        if (pos.y >= minwy) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  };
+
+  const auto check_y = [&]() -> bool {
+    // sort positions in ascendant order of y. white comes first if y is same.
+    std::sort(positions.begin(), positions.end(),
+              [](const pos& l, const pos& r) -> bool {
+                if (l.y == r.y) {
+                  return l.c == 'W';
+                }
+                return l.y < r.y;
+              });
+
+    u32 minwx{numeric_limits<u32>::max()};
+    for (const auto& pos : positions) {
+      if (pos.c == 'W') {
+        minwx = min(minwx, pos.x);
+      } else {
+        if (pos.x >= minwx) {
+          return false;
+        }
+      }
     }
     return true;
   };
 
-  cout << (check() ? "Yes" : "No") << endl;
+  cout << (check_x() && check_y() ? "Yes" : "No") << endl;
 }
