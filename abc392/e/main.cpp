@@ -49,7 +49,9 @@ int main() {
     }
 
     for (auto connection : connections[curr]) {
-      works.push(work{curr, connection});
+      works.push(work{
+          curr,
+      });
     }
   }
 }
