@@ -5,7 +5,7 @@
 
 namespace util {
 
-template <std::integral Int>
+template <std::signed_integral Int>
 inline std::pair<Int, Int> binary_search(Int ok, Int ng,
                                          std::function<bool(Int value)> check) {
   while (std::abs(ok - ng) > 1) {

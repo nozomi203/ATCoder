@@ -12,6 +12,8 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-I",
                 "${workspaceFolder}",
+                "-I",
+                "${workspaceFolder}\\ac-library",
                 "-std=c++20"
             ],
             "options": {

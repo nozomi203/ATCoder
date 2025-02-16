@@ -1,4 +1,4 @@
-#line 1 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\common.h"
+#line 1 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\common.h"
 #include <bits/stdc++.h>
 
 using s32 = int32_t;
@@ -30,7 +30,7 @@ int main() {
     std::sort(positions.begin(), positions.end(),
               [](const pos& l, const pos& r) -> bool {
                 if (l.x == r.x) {
-                  return l.c == 'W';
+                  return l.c == 'W' || r.c == 'B';
                 }
                 return l.x < r.x;
               });
@@ -54,7 +54,7 @@ int main() {
     std::sort(positions.begin(), positions.end(),
               [](const pos& l, const pos& r) -> bool {
                 if (l.y == r.y) {
-                  return l.c == 'W';
+                  return l.c == 'W' || r.c == 'B';
                 }
                 return l.y < r.y;
               });

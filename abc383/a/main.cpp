@@ -1,0 +1,16 @@
+#include "util/common.h"
+
+int main() {
+  s64 N;
+  cin >> N;
+  s64 ans{0};
+  s64 t_prv{0};
+  for (s64 i = 0; i < N; ++i) {
+    s64 T, V;
+    cin >> T >> V;
+    ans = max<s64>(0, ans - (T - t_prv));
+    ans += V;
+    t_prv = T;
+  }
+  cout << ans << endl;
+}

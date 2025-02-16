@@ -121,7 +121,8 @@
         "generator": "cpp",
         "print": "cpp",
         "text_encoding": "cpp",
-        "lazysegtree": "cpp"
+        "lazysegtree": "cpp",
+        "all": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "Google",
     "C_Cpp.formatting": "clangFormat"
