@@ -1,45 +1,5 @@
 #include "util/common.h"
 
-map<pair<s64, s64>, s64> g_mem;
-
-s64 get_max_length(const vector<vector<s64>>& conns, s64 idx, s64 prev_idx,
-                   bool& has_cross) {
-  if (g_mem.count(make_pair(idx, prev_idx)))
-    return g_mem.at(make_pair(idx, prev_idx));
-
-  s64 ret{1};
-  if (conns[idx].size() == 1) {
-  } else if (conns[idx].size() < 4) {
-    vector<s64> cands;
-    for (auto conn_idx : conns[idx]) {
-      if (conn_idx == prev_idx) continue;
-      cands.push_back(get_max_length(conns, conn_idx, idx, has_cross));
-    }
-    sort(cands.begin(), cands.end(), std::greater());
-    ret += cands[0];
-  } else if (conns[idx].size() == 4) {
-    has_cross = true;
-    for (auto conn_idx : conns[idx]) {
-      if (conn_idx == prev_idx) continue;
-      ret += (get_max_length(conns, conn_idx, idx, has_cross));
-    }
-  } else {
-    has_cross = true;
-    vector<s64> cands;
-    for (auto conn_idx : conns[idx]) {
-      if (conn_idx == prev_idx) continue;
-      cands.push_back(get_max_length(conns, conn_idx, idx, has_cross));
-    }
-    sort(cands.begin(), cands.end(), std::greater());
-    for (s64 i = 0; i < 3; ++i) {
-      ret += cands[i];
-    }
-  }
-
-  g_mem.emplace(make_pair(idx, prev_idx), ret);
-  return ret;
-}
-
 int main() {
   s64 N;
   cin >> N;
@@ -52,17 +12,58 @@ int main() {
   }
 
   const auto get_ans = [&]() -> s64 {
-    s64 idx{-1};
-    for (s64 i = 0; i < N; ++i) {
-      if (conns[i].size() == 1) {
-        idx = i;
-        break;
+    vector<s64> dp(N + 1), alkan(N + 1);
+    s64 root_idx = 1;
+    struct work {
+      s64 idx;
+      s64 parent_idx;
+      bool open;
+    };
+    stack<work> works;
+    works.push(work{root_idx, -1, false});
+    while (!works.empty()) {
+      auto& w = works.top();
+      if (w.open) {
+        if (conns[w.idx].size() < 3) {
+          dp[w.idx] = 1;
+        } else {
+          vector<s64> cands;
+          for (auto conn_idx : conns[w.idx]) {
+            cands.push_back(dp[conn_idx]);
+          }
+          sort(cands.begin(), cands.end(), greater());
+          dp[w.idx] = 1 + cands[0] + cands[1] + cands[2];
+          alkan[w.idx] = true;
+        }
+        works.pop();
+      } else {
+        w.open = true;
+        for (auto it = conns[w.idx].begin(); it != conns[w.idx].end();) {
+          if (*it == w.parent_idx) {
+            it = conns[w.idx].erase(it);
+          } else {
+            works.push(work{*it, w.idx, false});
+            ++it;
+          }
+        }
       }
     }
-    if (idx < 0) return -1;
-    bool has_cross{false};
-    s64 max_length = get_max_length(conns, conns[idx][0], idx, has_cross) + 1;
-    return has_cross ? max_length : -1;
+
+    s64 ans{0};
+    for (s64 i = 1; i <= N; ++i) {
+      if (conns[i].empty()) continue;
+      vector<s64> cands;
+      for (auto conn_idx : conns[i]) {
+        cands.push_back(dp[conn_idx]);
+      }
+      sort(cands.begin(), cands.end(), greater());
+      auto val = cands.size() < 4
+                     ? 1 + cands[0]
+                     : 1 + cands[0] + cands[1] + cands[2] + cands[3];
+      ans = max(ans, val);
+    }
+
+    return ans > 2 ? ans : -1;
   };
 
   cout << get_ans() << endl;
