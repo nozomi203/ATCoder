@@ -1,4 +1,4 @@
-#line 1 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\common.h"
+#line 1 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\common.h"
 #include <bits/stdc++.h>
 
 using s32 = int32_t;
@@ -7,11 +7,11 @@ using s64 = int64_t;
 using u64 = uint64_t;
 
 using namespace std;
-#line 2 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\digit.h"
+#line 2 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\digit.h"
 
-#line 4 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\digit.h"
+#line 4 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\digit.h"
 #include <concepts>
-#line 6 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\digit.h"
+#line 6 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\digit.h"
 #include <type_traits>
 
 namespace util {
@@ -37,55 +37,49 @@ inline constexpr UInt get_value_at(UInt value, UInt digit) {
 }  // namespace util
 #line 3 "main.cpp"
 
-s64 powi(s64 x, s64 y) {
-  if (y == 1) return x;
-  return x * pow(x, y - 1);
+s64 powi(s64 val, s64 pow) {
+  if (pow == 0) return 1;
+  if (pow == 1) return val;
+  return powi(val, pow / 2) * powi(val, pow - pow / 2);
 }
 
-bool is_snake_num(u64 num) {
-  const auto max_digit = util::get_max_digit(num);
-  if (max_digit < 1) return false;
-  const auto front = util::get_value_at(num, max_digit);
-  for (s64 digit = max_digit - 1; digit >= 0; --digit) {
-    if (util::get_value_at(num, static_cast<u64>(digit)) >= front) return false;
+s64 get_snake_num_count(s64 val) {
+  vector<s64> v;
+  while (val) {
+    v.push_back(val % 10);
+    val /= 10;
   }
-  return true;
-}
 
-/// @brief get count of snake number less than equal {max}
-/// @param max
-/// @return
-u64 get_snake_num_count(u64 max) {
-  u64 ans{0};
-  // snake_num == max
-  if (is_snake_num(max)) ++ans;
-  // 先頭i桁が一致
-  const auto max_digit = util::get_max_digit(max);
-  const auto front = util::get_value_at(max, max_digit);
-  for (s64 i = max_digit; i >= 1; --i) {
-    const auto v = util::get_value_at(max, static_cast<u64>(i));
-    if (i < max_digit && v >= front) break;
-    ans += std::min(util::get_value_at(max, static_cast<u64>(i - 1)), front) *
-           powi(front, i - 1);
+  s64 ret{0};
+  {  // iまでの数が一致している場合
+    const s64 max_num = v.back();
+    for (s64 i = v.size() - 1; i >= 0; --i) {
+      if (i < v.size() - 1 && v[i] >= max_num) break;
+      if (i > 0) {
+        ret += min(max_num, v[i - 1]) * powi(max_num, max<s64>(0, i - 1));
+      } else {
+        ret += 1;
+      }
+    }
   }
-  // 先頭が小さい
-  for (u64 i = 1; i < front; ++i) {
-    ans += powi(i, max_digit);
+  {  // 先頭が正の異なる数の場合
+    for (s64 max_num = v.back() - 1; max_num >= 1; --max_num) {
+      ret += powi(max_num, v.size() - 1);
+    }
   }
-  // 桁が小さい
-  for (u64 digit = max_digit - 1; digit >= 1; --digit) {
-    for (u64 i = 1; i <= 9; ++i) {
-      ans += powi(i, digit);
+  {
+    for (s64 i = v.size() - 1; i >= 1; --i) {
+      for (s64 j = 9; j >= 1; --j) {
+        ret += powi(j, i - 1);
+      }
     }
   }
 
-  return ans;
+  return ret;
 }
 
 int main() {
   u64 L, R;
   cin >> L >> R;
-
-  u64 ans = get_snake_num_count(R) - get_snake_num_count(L - 1);
-  cout << ans << endl;
+  cout << get_snake_num_count(R) - get_snake_num_count(L - 1) << endl;
 }

@@ -1,66 +1,49 @@
 #include "util/common.h"
 #include "util/digit.h"
 
-s64 powi(s64 x, s64 y) {
-  if (y == 1) return x;
-  return x * pow(x, y - 1);
+s64 powi(s64 val, s64 pow) {
+  if (pow == 0) return 1;
+  if (pow == 1) return val;
+  return powi(val, pow / 2) * powi(val, pow - pow / 2);
 }
 
-vector<s64> int_to_vec(s64 i) {
-  vector<s64> ret;
-  while (i > 0) {
-    ret.push_back(i % 10);
-    i /= 10;
+s64 get_snake_num_count(s64 val) {
+  vector<s64> v;
+  while (val) {
+    v.push_back(val % 10);
+    val /= 10;
   }
-  std::reverse(ret.begin(), ret.end());
-  return ret;
-}
 
-bool is_snake_num(const vector<s64>& vec) {
-  const auto max_digit = vec.size() - 1;
-  if (max_digit < 1) return false;
-  const auto front = vec[max_digit];
-  for (s64 digit = max_digit - 1; digit >= 0; --digit) {
-    if (vec[digit] >= front) return false;
+  s64 ret{0};
+  {  // iまでの数が一致している場合
+    const s64 max_num = v.back();
+    for (s64 i = v.size() - 1; i >= 0; --i) {
+      if (i < v.size() - 1 && v[i] >= max_num) break;
+      if (i > 0) {
+        ret += min(max_num, v[i - 1]) * powi(max_num, max<s64>(0, i - 1));
+      } else {
+        ret += 1;
+      }
+    }
   }
-  return true;
-}
-
-/// @brief get count of snake number less than equal {max}
-/// @param max
-/// @return
-u64 get_snake_num_count(const vector<s64>& vec) {
-  u64 ans{0};
-  // snake_num == max
-  if (is_snake_num(vec)) ++ans;
-  // 先頭i桁が一致
-  const auto max_digit = vec.size() - 1;
-  const auto front = vec[max_digit];
-  for (s64 i = max_digit; i >= 1; --i) {
-    const auto v = vec[i];
-    if (i < max_digit && v >= front) break;
-    ans += std::min(vec[i - 1], front) * powi(front, i - 1);
+  {  // 先頭が正の異なる数の場合
+    for (s64 max_num = v.back() - 1; max_num >= 1; --max_num) {
+      ret += powi(max_num, v.size() - 1);
+    }
   }
-  // 先頭が小さい
-  for (u64 i = 1; i < front; ++i) {
-    ans += powi(i, max_digit);
-  }
-  // 桁が小さい
-  for (u64 digit = max_digit - 1; digit >= 1; --digit) {
-    for (u64 i = 1; i <= 9; ++i) {
-      ans += powi(i, digit);
+  {
+    for (s64 i = v.size() - 1; i >= 1; --i) {
+      for (s64 j = 9; j >= 1; --j) {
+        ret += powi(j, i - 1);
+      }
     }
   }
 
-  return ans;
+  return ret;
 }
 
 int main() {
   u64 L, R;
   cin >> L >> R;
-
-  vector<s64> vec_l(int_to_vec(L - 1)), vec_r(int_to_vec(R));
-
-  u64 ans = get_snake_num_count(vec_r) - get_snake_num_count(vec_l);
-  cout << ans << endl;
+  cout << get_snake_num_count(R) - get_snake_num_count(L - 1) << endl;
 }
