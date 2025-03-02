@@ -3,42 +3,49 @@
 int main() {
   s64 N, X;
   cin >> N >> X;
-  // dp[i][j] = カロリーがiになるように栄養jを摂取したときの摂取量の最大値
-  vector<array<s32, 3>> dp(
-      X + 1, {numeric_limits<s32>::lowest(), numeric_limits<s32>::lowest(),
-              numeric_limits<s32>::lowest()});
-  dp[0][0] = 0;
-  dp[0][1] = 0;
-  dp[0][2] = 0;
+  struct food {
+    s64 v;
+    s64 a;
+    s64 c;
+  };
+  vector<food> foods(N + 1);
+  for (s64 i{1}; i <= N; ++i) cin >> foods[i].v >> foods[i].a >> foods[i].c;
 
-  for (s64 i = 1; i <= N; ++i) {
-    s32 V, A, C;
-    cin >> V >> A >> C;
-    --V;
-
-    for (s64 j = C; j <= X; ++j) {
-      dp[j][V] = max(dp[j][V], dp[j - C][V] + A);
+  vector<vector<vector<s64>>> dp(
+      4, vector<vector<s64>>(N + 1, vector<s64>(X + 1)));
+  for (s64 i{1}; i <= 3; ++i) {
+    for (s64 j{1}; j <= N; ++j) {
+      for (s64 k{1}; k <= X; ++k) {
+        if (foods[j].v != i || k < foods[j].c) {
+          dp[i][j][k] = dp[i][j - 1][k];
+        } else {
+          dp[i][j][k] = max<s64>(dp[i][j - 1][k],
+                                 dp[i][j - 1][k - foods[j].c] + foods[j].a);
+        }
+      }
+    }
+  }
+  vector<vector<s64>> dp2(4, vector<s64>(X + 1));
+  for (s64 i{1}; i <= 3; ++i) {
+    s64 a_max{0};
+    for (s64 k{1}; k <= X; ++k) {
+      a_max = max(a_max, dp[i][N][k]);
+      dp2[i][k] = a_max;
     }
   }
 
-  for (s64 i = 1; i <= X; ++i) {
-    for (s64 j = 0; j < 3; ++j) {
-      dp[i][j] = max(dp[i][j], dp[i - 1][j]);
+  vector<s64> c(4), a(4);
+  while (c[1] + c[2] + c[3] < X) {
+    if (a[1] <= a[2] && a[1] <= a[3]) {
+      ++c[1];
+      a[1] = dp2[1][c[1]];
+    } else if (a[2] <= a[1] && a[2] <= a[3]) {
+      ++c[2];
+      a[2] = dp2[2][c[2]];
+    } else {
+      ++c[3];
+      a[3] = dp2[3][c[3]];
     }
   }
-
-  array<s32, 3> carories{0, 0, 0};
-  for (s64 i = 0; i < X; ++i) {
-    if (dp[carories[0]][0] <= dp[carories[1]][1] &&
-        dp[carories[0]][0] <= dp[carories[2]][2])
-      ++carories[0];
-    else if (dp[carories[1]][1] <= dp[carories[0]][0] &&
-             dp[carories[1]][1] <= dp[carories[2]][2])
-      ++carories[1];
-    else
-      ++carories[2];
-  }
-
-  cout << min(dp[carories[0]][0], min(dp[carories[1]][1], dp[carories[2]][2]))
-       << endl;
+  cout << min({a[1], a[2], a[3]}) << endl;
 }

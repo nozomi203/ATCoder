@@ -40,6 +40,7 @@ uint64_t string_distance(const std::string& l, const std::string& r,
       }
     }
   }
-  return dp[l.size()][r.size() + dist_max + 1 - l.size()];
+  const size_t idx2 = r.size() + dist_max + 1 - l.size();
+  return idx2 >= dp[l.size()].size() ? dist_max : dp[l.size()][idx2];
 }
 }  // namespace util

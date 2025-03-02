@@ -5,57 +5,59 @@ int main() {
   cin >> N >> M;
 
   struct pos {
-    u32 x{0};
-    u32 y{0};
-    char c{0};
+    u32 x;
+    u32 y;
+    u32 c;
   };
-  vector<pos> positions(M, pos{});
+  vector<pos> positions(M);
   for (u32 i = 0; i < M; ++i) {
-    cin >> positions[i].x;
-    cin >> positions[i].y;
-    cin >> positions[i].c;
+    s64 x, y;
+    char c;
+    cin >> x >> y >> c;
+    positions[i].x = x;
+    positions[i].y = y;
+    positions[i].c = c == 'W' ? 0 : 1;
   }
 
-  const auto check_x = [&]() -> bool {
+  const auto check_x = [](vector<pos> positions) -> bool {
     // sort positions in ascendant order of x. white comes first if x is same.
     std::sort(positions.begin(), positions.end(),
               [](const pos& l, const pos& r) -> bool {
                 if (l.x == r.x) {
-                  return l.c == 'W' || r.c == 'B';
+                  return l.c < r.c;
                 }
                 return l.x < r.x;
               });
 
     u32 minwy{numeric_limits<u32>::max()};
-    for (const auto& pos : positions) {
-      if (pos.c == 'W') {
-        minwy = min(minwy, pos.y);
+    for (const auto& p : positions) {
+      if (p.c == 0) {
+        minwy = min<u32>(minwy, p.y);
       } else {
-        if (pos.y >= minwy) {
+        if (p.y >= minwy) {
           return false;
         }
       }
     }
-
     return true;
   };
 
-  const auto check_y = [&]() -> bool {
+  const auto check_y = [](vector<pos> positions) -> bool {
     // sort positions in ascendant order of y. white comes first if y is same.
     std::sort(positions.begin(), positions.end(),
               [](const pos& l, const pos& r) -> bool {
                 if (l.y == r.y) {
-                  return l.c == 'W' || r.c == 'B';
+                  return l.c < r.c;
                 }
                 return l.y < r.y;
               });
 
     u32 minwx{numeric_limits<u32>::max()};
-    for (const auto& pos : positions) {
-      if (pos.c == 'W') {
-        minwx = min(minwx, pos.x);
+    for (const auto& p : positions) {
+      if (p.c == 0) {
+        minwx = min<u32>(minwx, p.x);
       } else {
-        if (pos.x >= minwx) {
+        if (p.x >= minwx) {
           return false;
         }
       }
@@ -63,5 +65,5 @@ int main() {
     return true;
   };
 
-  cout << (check_x() && check_y() ? "Yes" : "No") << endl;
+  cout << ((check_x(positions) && check_y(positions)) ? "Yes" : "No") << endl;
 }

@@ -6,5 +6,5 @@ int main() {
   cin >> K;
   string S, T;
   cin >> S >> T;
-  cout << (util::string_distance(S, T, 1) <= K ? "Yes" : "No") << endl;
+  cout << (util::string_distance(S, T, K + 1) <= K ? "Yes" : "No") << endl;
 }

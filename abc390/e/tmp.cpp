@@ -12,47 +12,49 @@ using namespace std;
 int main() {
   s64 N, X;
   cin >> N >> X;
-  vector<vector<vector<s32>>> dp(N + 1,
-                                 vector<vector<s32>>(X + 1, vector<s32>(3, 0)));
-  for (s64 i = 1; i <= N; ++i) {
-    s32 V, A, C;
-    cin >> V >> A >> C;
-    --V;
+  struct food {
+    s64 v;
+    s64 a;
+    s64 c;
+  };
+  vector<food> foods(N + 1);
+  for (s64 i{1}; i <= N; ++i) cin >> foods[i].v >> foods[i].a >> foods[i].c;
 
-    for (s64 j = 1; j <= X; ++j) {
-      for (s64 k = 0; k < 3; ++k) {
-        if (k != V || j < C) {
-          dp[i][j][k] = dp[i - 1][j][k];
-          continue;
+  vector<vector<vector<s64>>> dp(
+      4, vector<vector<s64>>(N + 1, vector<s64>(X + 1)));
+  for (s64 i{1}; i <= 3; ++i) {
+    for (s64 j{1}; j <= N; ++j) {
+      for (s64 k{1}; k <= X; ++k) {
+        if (foods[j].v != i || k < foods[j].c) {
+          dp[i][j][k] = dp[i][j - 1][k];
+        } else {
+          dp[i][j][k] = max<s64>(dp[i][j - 1][k],
+                                 dp[i][j - 1][k - foods[j].c] + foods[j].a);
         }
-        dp[i][j][k] = max(dp[i - 1][j][k], dp[i - 1][j - C][k] + A);
       }
     }
   }
-  // dp2[i][j] = 栄養jを合計カロリーiいないで摂取した時の摂取量
-  //   vector<vector<s32>> dp2(X + 1, vector<s32>(3, 0));
-  //   for (s64 i = 1; i <= X; ++i) {
-  //     for (s64 j = 0; j < 3; ++j) {
-  //       dp2[i][j] = max(dp2[i - 1][j], dp[N][i][j]);
-  //     }
-  //   }
-
-  vector<pair<s32, s32>> ac(3, {0, 0});  // 各栄養の摂取量とカロリー
-  while (ac[0].second + ac[1].second + ac[2].second < X) {
-    // index of minimum amount nutrition
-    const u64 min_idx = distance(
-        ac.begin(),
-        min_element(ac.begin(), ac.end(), [](const auto& l, const auto& r) {
-          return l.first < r.first;
-        }));
-
-    ++ac[min_idx].second;
-    ac[min_idx].first = dp[N][ac[min_idx].second][min_idx];
+  vector<vector<s64>> dp2(4, vector<s64>(X + 1));
+  for (s64 i{1}; i <= 3; ++i) {
+    s64 a_max{0};
+    for (s64 k{1}; k <= X; ++k) {
+      a_max = max(a_max, dp[i][N][k]);
+      dp2[i][k] = a_max;
+    }
   }
 
-  cout << (min_element(
-               ac.begin(), ac.end(),
-               [](const auto& l, const auto& r) { return l.first < r.first; })
-               ->first)
-       << endl;
+  vector<s64> c(4), a(4);
+  while (c[1] + c[2] + c[3] < X) {
+    if (a[1] <= a[2] && a[1] <= a[3]) {
+      ++c[1];
+      a[1] = dp2[1][c[1]];
+    } else if (a[2] <= a[1] && a[2] <= a[3]) {
+      ++c[2];
+      a[2] = dp2[2][c[2]];
+    } else {
+      ++c[3];
+      a[3] = dp2[3][c[3]];
+    }
+  }
+  cout << min({a[1], a[2], a[3]}) << endl;
 }

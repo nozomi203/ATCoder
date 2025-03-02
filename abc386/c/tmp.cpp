@@ -1,4 +1,4 @@
-#line 1 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\common.h"
+#line 1 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\common.h"
 #include <bits/stdc++.h>
 
 using s32 = int32_t;
@@ -7,7 +7,7 @@ using s64 = int64_t;
 using u64 = uint64_t;
 
 using namespace std;
-#line 6 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\string_distance.h"
+#line 6 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\string_distance.h"
 
 namespace util {
 uint64_t string_distance(const std::string& l, const std::string& r,
@@ -45,7 +45,8 @@ uint64_t string_distance(const std::string& l, const std::string& r,
       }
     }
   }
-  return dp[l.size()][r.size() + dist_max + 1 - l.size()];
+  const size_t idx2 = r.size() + dist_max + 1 - l.size();
+  return idx2 >= dp[l.size()].size() ? dist_max : dp[l.size()][idx2];
 }
 }  // namespace util
 #line 3 "main.cpp"
@@ -55,5 +56,5 @@ int main() {
   cin >> K;
   string S, T;
   cin >> S >> T;
-  cout << (util::string_distance(S, T, 1) <= K ? "Yes" : "No") << endl;
+  cout << (util::string_distance(S, T, 2) <= K ? "Yes" : "No") << endl;
 }
