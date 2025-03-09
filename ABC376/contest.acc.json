@@ -1,15 +1,15 @@
 {
   "contest": {
-    "id": "abc375",
-    "title": "Panasonic Programming Contest 2024（AtCoder Beginner Contest 375）",
-    "url": "https://atcoder.jp/contests/abc375"
+    "id": "abc376",
+    "title": "AtCoder Beginner Contest 376",
+    "url": "https://atcoder.jp/contests/abc376"
   },
   "tasks": [
     {
-      "id": "abc375_a",
+      "id": "abc376_a",
       "label": "A",
-      "title": "Seats",
-      "url": "https://atcoder.jp/contests/abc375/tasks/abc375_a",
+      "title": "Candy Button",
+      "url": "https://atcoder.jp/contests/abc376/tasks/abc376_a",
       "directory": {
         "path": "a",
         "testdir": "tests",
@@ -17,10 +17,10 @@
       }
     },
     {
-      "id": "abc375_b",
+      "id": "abc376_b",
       "label": "B",
-      "title": "Traveling Takahashi Problem",
-      "url": "https://atcoder.jp/contests/abc375/tasks/abc375_b",
+      "title": "Hands on Ring (Easy)",
+      "url": "https://atcoder.jp/contests/abc376/tasks/abc376_b",
       "directory": {
         "path": "b",
         "testdir": "tests",
@@ -28,10 +28,10 @@
       }
     },
     {
-      "id": "abc375_c",
+      "id": "abc376_c",
       "label": "C",
-      "title": "Spiral Rotation",
-      "url": "https://atcoder.jp/contests/abc375/tasks/abc375_c",
+      "title": "Prepare Another Box",
+      "url": "https://atcoder.jp/contests/abc376/tasks/abc376_c",
       "directory": {
         "path": "c",
         "testdir": "tests",
@@ -39,10 +39,10 @@
       }
     },
     {
-      "id": "abc375_d",
+      "id": "abc376_d",
       "label": "D",
-      "title": "ABA",
-      "url": "https://atcoder.jp/contests/abc375/tasks/abc375_d",
+      "title": "Cycle",
+      "url": "https://atcoder.jp/contests/abc376/tasks/abc376_d",
       "directory": {
         "path": "d",
         "testdir": "tests",
@@ -50,10 +50,10 @@
       }
     },
     {
-      "id": "abc375_e",
+      "id": "abc376_e",
       "label": "E",
-      "title": "3 Team Division",
-      "url": "https://atcoder.jp/contests/abc375/tasks/abc375_e",
+      "title": "Max × Sum",
+      "url": "https://atcoder.jp/contests/abc376/tasks/abc376_e",
       "directory": {
         "path": "e",
         "testdir": "tests",
@@ -61,10 +61,10 @@
       }
     },
     {
-      "id": "abc375_f",
+      "id": "abc376_f",
       "label": "F",
-      "title": "Road Blocked",
-      "url": "https://atcoder.jp/contests/abc375/tasks/abc375_f",
+      "title": "Hands on Ring (Hard) ",
+      "url": "https://atcoder.jp/contests/abc376/tasks/abc376_f",
       "directory": {
         "path": "f",
         "testdir": "tests",
@@ -72,10 +72,10 @@
       }
     },
     {
-      "id": "abc375_g",
+      "id": "abc376_g",
       "label": "G",
-      "title": "Road Blocked 2",
-      "url": "https://atcoder.jp/contests/abc375/tasks/abc375_g",
+      "title": "Treasure Hunting",
+      "url": "https://atcoder.jp/contests/abc376/tasks/abc376_g",
       "directory": {
         "path": "g",
         "testdir": "tests",
