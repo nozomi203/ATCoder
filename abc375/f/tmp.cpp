@@ -1,4 +1,4 @@
-#line 1 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\common.h"
+#line 1 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\common.h"
 #include <bits/stdc++.h>
 
 using s32 = int32_t;
@@ -19,49 +19,70 @@ int main() {
   };
   vector<conn> conns(m);
   for (s64 i{0}; i < m; ++i) cin >> conns[i].a >> conns[i].b >> conns[i].c;
+
   constexpr s64 inf = numeric_limits<s64>::max();
-
   vector<vector<s64>> dists(n + 1, vector<s64>(n + 1, inf));
-  vector<vector<bool>> blocked(n + 1, vector<bool>(n + 1, false));
-  const auto update_dist = [&]() {
-    for (auto& v : dists) fill(v.begin(), v.end(), inf);
-    for (const auto& conn : conns)
-      if (!blocked[conn.a][conn.b])
-        dists[conn.a][conn.b] = dists[conn.b][conn.a] = conn.c;
+  for (const auto& conn : conns)
+    dists[conn.a][conn.b] = dists[conn.b][conn.a] = conn.c;
+  for (s64 i{1}; i <= n; ++i) dists[i][i] = 0;
 
-    for (s64 i{1}; i <= n; ++i) dists[i][i] = 0;
-
-    for (s64 k{1}; k < n; ++k) {
-      for (s64 i{1}; i <= n; ++i) {
-        for (s64 j{1}; j <= n; ++j) {
-          if (dists[i][k] != inf && dists[k][j] != inf) {
-            dists[i][j] = min(dists[i][j], dists[i][k] + dists[k][j]);
-          }
-        }
-      }
-    }
-  };
-  update_dist();
-
-  vector<s64> answers;
-
-  for (s64 i{0}; i < q; ++i) {
+  struct query {
     s64 q;
-    cin >> q;
-    if (q == 1) {
-      s64 i;
-      cin >> i;
-      --i;
-      blocked[conns[i].a][conns[i].b] = blocked[conns[i].b][conns[i].a] = true;
-      update_dist();
+    s64 x;
+    s64 y;
+    s64 z;
+  };
+  vector<query> queries(q);
+  for (s64 i{0}; i < q; ++i) {
+    cin >> queries[i].q;
+    if (queries[i].q == 1) {
+      s64 c;
+      cin >> c;
+      --c;
+      queries[i].x = conns[c].a;
+      queries[i].y = conns[c].b;
+      queries[i].z = conns[c].c;
+      dists[queries[i].x][queries[i].y] = dists[queries[i].y][queries[i].x] =
+          inf;
     } else {
-      s64 i, j;
-      cin >> i >> j;
-      answers.push_back(dists[i][j] == inf ? -1 : dists[i][j]);
+      cin >> queries[i].x >> queries[i].y;
     }
   }
 
-  for (auto ans : answers) {
-    cout << ans << endl;
+  for (s64 k{1}; k <= n; ++k) {
+    for (s64 i{1}; i <= n; ++i) {
+      for (s64 j{1}; j <= n; ++j) {
+        if (dists[i][k] != inf && dists[k][j] != inf) {
+          dists[i][j] = min(dists[i][j], dists[i][k] + dists[k][j]);
+        }
+      }
+    }
+  }
+
+  vector<s64> answers;
+
+  for (auto qit = queries.rbegin(); qit != queries.rend(); ++qit) {
+    const auto& query = *qit;
+    if (query.q == 1) {
+      for (s64 i{1}; i <= n; ++i) {
+        for (s64 j{1}; j <= n; ++j) {
+          if (dists[i][query.x] < inf && dists[query.y][j] < inf) {
+            dists[i][j] = min(dists[i][j],
+                              dists[i][query.x] + query.z + dists[query.y][j]);
+          }
+          if (dists[i][query.y] < inf && dists[query.x][j] < inf) {
+            dists[i][j] = min(dists[i][j],
+                              dists[i][query.y] + query.z + dists[query.x][j]);
+          }
+        }
+      }
+    } else {
+      answers.push_back(
+          dists[query.x][query.y] == inf ? -1 : dists[query.x][query.y]);
+    }
+  }
+
+  for (auto ait = answers.rbegin(); ait != answers.rend(); ++ait) {
+    cout << *ait << endl;
   }
 }

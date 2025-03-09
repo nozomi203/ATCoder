@@ -40,7 +40,7 @@ int main() {
     }
   }
 
-  for (s64 k{1}; k < n; ++k) {
+  for (s64 k{1}; k <= n; ++k) {
     for (s64 i{1}; i <= n; ++i) {
       for (s64 j{1}; j <= n; ++j) {
         if (dists[i][k] != inf && dists[k][j] != inf) {
@@ -57,13 +57,13 @@ int main() {
     if (query.q == 1) {
       for (s64 i{1}; i <= n; ++i) {
         for (s64 j{1}; j <= n; ++j) {
-          if (dists[i][query.x] < inf && dists[query.x][j] < inf) {
+          if (dists[i][query.x] < inf && dists[query.y][j] < inf) {
             dists[i][j] = min(dists[i][j],
-                              dists[i][query.x] + query.z + dists[query.x][j]);
+                              dists[i][query.x] + query.z + dists[query.y][j]);
           }
-          if (dists[i][query.y] < inf && dists[query.y][j] < inf) {
+          if (dists[i][query.y] < inf && dists[query.x][j] < inf) {
             dists[i][j] = min(dists[i][j],
-                              dists[i][query.y] + query.z + dists[query.y][j]);
+                              dists[i][query.y] + query.z + dists[query.x][j]);
           }
         }
       }
