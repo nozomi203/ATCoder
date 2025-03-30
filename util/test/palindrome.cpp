@@ -4,11 +4,17 @@
 
 int main() {
   std::string s = "abacababa";
-  auto r = util::palindrome_radius(s);
-  TEST(r[0], 1);
-  TEST(r[1], 2);
-  TEST(r[2], 1);
-  TEST(r[3], 4);
-  TEST(r[4], 1);
-  TEST(r[5], 2);
+  auto l = util::palindrome_length(s);
+  TEST(l[0].first, 1);
+  TEST(l[0].second, 0);
+  TEST(l[1].first, 3);
+  TEST(l[1].second, 0);
+  TEST(l[2].first, 1);
+  TEST(l[2].second, 0);
+  TEST(l[3].first, 7);
+  TEST(l[3].second, 0);
+  TEST(l[4].first, 1);
+  TEST(l[4].second, 0);
+  TEST(l[5].first, 3);
+  TEST(l[5].second, 0);
 }

@@ -1,0 +1,108 @@
+{
+  "contest": {
+    "id": "s8pc-6",
+    "title": "square869120Contest #6",
+    "url": "https://atcoder.jp/contests/s8pc-6"
+  },
+  "tasks": [
+    {
+      "id": "s8pc_6_a",
+      "label": "A",
+      "title": "E869120, who Leaps through Time",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_6_b",
+      "label": "B",
+      "title": "AtCoder Market",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_6_c",
+      "label": "C",
+      "title": "Infinite Grid",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_6_d",
+      "label": "D",
+      "title": "Snowballs",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_6_e",
+      "label": "E",
+      "title": "90-degree Rotations",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_6_f",
+      "label": "F",
+      "title": "Random Shuffles",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_f",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_6_g",
+      "label": "G",
+      "title": "Medals",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_g",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_6_h",
+      "label": "H",
+      "title": "Percepts of AtCoder 2",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_h",
+      "directory": {
+        "path": "h",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_6_i",
+      "label": "I",
+      "title": "Garden 2",
+      "url": "https://atcoder.jp/contests/s8pc-6/tasks/s8pc_6_i",
+      "directory": {
+        "path": "i",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}

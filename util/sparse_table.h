@@ -6,15 +6,14 @@
 #include <vector>
 
 namespace util {
-template <class TValue, class TResult, auto OpFunc>
+template <class TValue, auto OpFunc>
 class sparse_table {
-  static_assert(std::is_convertible_v<
-                decltype(OpFunc), std::function<TResult(TResult, TResult)>>);
+  static_assert(std::is_convertible_v<decltype(OpFunc),
+                                      std::function<TValue(TValue, TValue)>>);
 
  public:
   sparse_table(const std::vector<TValue>& data)
-      : m_table(std::bit_width(data.size()),
-                std::vector<TResult>(data.size())) {
+      : m_table(std::bit_width(data.size()), std::vector<TValue>(data.size())) {
     assert(data.size() > 0);
     for (size_t j{0}; j < data.size(); ++j) m_table[0][j] = data[j];
     for (size_t i{1}; i < m_table.size(); ++i) {
@@ -31,7 +30,7 @@ class sparse_table {
   /// @param idx_l
   /// @param idx_r
   /// @return
-  TResult query(size_t idx_l, size_t idx_r) {
+  TValue query(size_t idx_l, size_t idx_r) const {
     assert(idx_l <= idx_r);
     assert(0 <= idx_l);
     assert(idx_r < m_table[0].size());
@@ -40,6 +39,6 @@ class sparse_table {
   }
 
  private:
-  std::vector<std::vector<TResult>> m_table;
+  std::vector<std::vector<TValue>> m_table;
 };
 }  // namespace util
