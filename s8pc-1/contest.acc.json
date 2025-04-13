@@ -1,0 +1,97 @@
+{
+  "contest": {
+    "id": "s8pc-1",
+    "title": "square869120Contest #1",
+    "url": "https://atcoder.jp/contests/s8pc-1"
+  },
+  "tasks": [
+    {
+      "id": "s8pc_1_a",
+      "label": "A",
+      "title": "E869120列車 (E869120 Trains)",
+      "url": "https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_1_b",
+      "label": "B",
+      "title": "ケーキ・カッティング (Cake Cutting)",
+      "url": "https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_1_c",
+      "label": "C",
+      "title": "お金の街 (The Money Town)",
+      "url": "https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_1_d",
+      "label": "D",
+      "title": "square1001の通学経路 (square1001's School Road)",
+      "url": "https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_1_e",
+      "label": "E",
+      "title": "散歩 (E869120 and Path Length)",
+      "url": "https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_1_f",
+      "label": "F",
+      "title": "square1001の好きな回文数 (square1001's Favorite Palindrome)",
+      "url": "https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_f",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_1_g",
+      "label": "G",
+      "title": "Revenge of Traveling Salesman Problem",
+      "url": "https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_g",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_1_h",
+      "label": "H",
+      "title": "3人の昼食 (The Lunch)",
+      "url": "https://atcoder.jp/contests/s8pc-1/tasks/s8pc_1_h",
+      "directory": {
+        "path": "h",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
