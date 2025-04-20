@@ -1,4 +1,4 @@
-#line 1 "C:\\Users\\takan\\Documents\\Program\\AtCoder\\util\\common.h"
+#line 1 "C:\\Users\\takan\\Documents\\Program\\ATCoder\\util\\common.h"
 #include <bits/stdc++.h>
 
 using s32 = int32_t;
