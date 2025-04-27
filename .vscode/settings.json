@@ -123,7 +123,8 @@
         "text_encoding": "cpp",
         "lazysegtree": "cpp",
         "all": "cpp",
-        "math": "cpp"
+        "math": "cpp",
+        "dsu": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "Google",
     "C_Cpp.formatting": "clangFormat"
