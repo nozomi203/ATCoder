@@ -33,7 +33,7 @@ int main() {
       return min(abs(xr - xl), abs(yr - yl));
     });
     if (d_x < d_y) {
-      ++idx_x;
+            ++idx_x;
     } else {
       ++idx_y;
     }

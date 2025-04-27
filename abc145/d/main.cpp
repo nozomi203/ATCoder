@@ -13,11 +13,10 @@ int main() {
   cin >> x >> y;
   // (1,2) * s + (2,1) * t = (x,y)
   const auto get = [&]() -> s64 {
-    if (x % 3) return 0;
-    const s64 t{x / 3};
-    if (y < t) return 0;
-    if ((y - t) % 2) return 0;
-    const s64 s{(y - t) / 2};
+    if ((2 * y - x) % 3) return 0;
+    if ((2 * x - y) % 3) return 0;
+    const s64 s{(2 * y - x) / 3}, t{(2 * x - y) / 3};
+    if (s < 0 || t < 0) return 0;
     using mint = atcoder::modint1000000007;
     mint a(1), b(1), c(1);
     for (s64 i{2}; i <= s + t; ++i) a *= i;
