@@ -1,0 +1,97 @@
+{
+  "contest": {
+    "id": "gigacode-2019",
+    "title": "GigaCode 2019",
+    "url": "https://atcoder.jp/contests/gigacode-2019"
+  },
+  "tasks": [
+    {
+      "id": "gigacode_2019_a",
+      "label": "A",
+      "title": "教室",
+      "url": "https://atcoder.jp/contests/gigacode-2019/tasks/gigacode_2019_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "gigacode_2019_b",
+      "label": "B",
+      "title": "採用面接",
+      "url": "https://atcoder.jp/contests/gigacode-2019/tasks/gigacode_2019_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "gigacode_2019_c",
+      "label": "C",
+      "title": "パソコンの購入",
+      "url": "https://atcoder.jp/contests/gigacode-2019/tasks/gigacode_2019_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "gigacode_2019_d",
+      "label": "D",
+      "title": "家の建設",
+      "url": "https://atcoder.jp/contests/gigacode-2019/tasks/gigacode_2019_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "gigacode_2019_e",
+      "label": "E",
+      "title": "車の乗り継ぎ",
+      "url": "https://atcoder.jp/contests/gigacode-2019/tasks/gigacode_2019_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "gigacode_2019_f",
+      "label": "F",
+      "title": "クローゼットの配置",
+      "url": "https://atcoder.jp/contests/gigacode-2019/tasks/gigacode_2019_f",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "gigacode_2019_g",
+      "label": "G",
+      "title": "ギガ国の道路事情",
+      "url": "https://atcoder.jp/contests/gigacode-2019/tasks/gigacode_2019_g",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "gigacode_2019_h",
+      "label": "H",
+      "title": "論理回路の構成",
+      "url": "https://atcoder.jp/contests/gigacode-2019/tasks/gigacode_2019_h",
+      "directory": {
+        "path": "h",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
