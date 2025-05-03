@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "joi2013ho",
+    "title": "第１２回日本情報オリンピック 本選（オープンコンテスト）",
+    "url": "https://atcoder.jp/contests/joi2013ho"
+  },
+  "tasks": [
+    {
+      "id": "joi2013ho1",
+      "label": "1",
+      "title": "電飾 (Illumination)",
+      "url": "https://atcoder.jp/contests/joi2013ho/tasks/joi2013ho1",
+      "directory": {
+        "path": "1",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2013ho2",
+      "label": "2",
+      "title": "IOI 列車で行こう (Take the 'IOI' train)",
+      "url": "https://atcoder.jp/contests/joi2013ho/tasks/joi2013ho2",
+      "directory": {
+        "path": "2",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2013ho3",
+      "label": "3",
+      "title": "現代的な屋敷 (Modern Mansion)",
+      "url": "https://atcoder.jp/contests/joi2013ho/tasks/joi2013ho3",
+      "directory": {
+        "path": "3",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2013ho4",
+      "label": "4",
+      "title": "JOIOI の塔 (Tower of JOIOI)",
+      "url": "https://atcoder.jp/contests/joi2013ho/tasks/joi2013ho4",
+      "directory": {
+        "path": "4",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2013ho5",
+      "label": "5",
+      "title": "バブルソート (Bubble Sort)",
+      "url": "https://atcoder.jp/contests/joi2013ho/tasks/joi2013ho5",
+      "directory": {
+        "path": "5",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}

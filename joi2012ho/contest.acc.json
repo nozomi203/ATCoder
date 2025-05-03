@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "joi2012ho",
+    "title": "第１１回日本情報オリンピック 本選（過去問）",
+    "url": "https://atcoder.jp/contests/joi2012ho"
+  },
+  "tasks": [
+    {
+      "id": "joi2012ho1",
+      "label": "A",
+      "title": "JJOOII (JJOOII)",
+      "url": "https://atcoder.jp/contests/joi2012ho/tasks/joi2012ho1",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2012ho2",
+      "label": "B",
+      "title": "たのしいカードゲーム (Card Game is Fun)",
+      "url": "https://atcoder.jp/contests/joi2012ho/tasks/joi2012ho2",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2012ho3",
+      "label": "C",
+      "title": "夜店 (Night Market)",
+      "url": "https://atcoder.jp/contests/joi2012ho/tasks/joi2012ho3",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2012ho4",
+      "label": "D",
+      "title": "釘 (Nails)",
+      "url": "https://atcoder.jp/contests/joi2012ho/tasks/joi2012ho4",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2012ho5",
+      "label": "E",
+      "title": "JOI 国のお祭り事情 (Festivals in JOI Kingdom)",
+      "url": "https://atcoder.jp/contests/joi2012ho/tasks/joi2012ho5",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}

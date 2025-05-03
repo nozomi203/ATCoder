@@ -13,4 +13,20 @@ int main() {
   for (s64 i{0}; i < m; ++i) cin >> p[i];
   vector<s64> a(n), b(n), c(n);
   for (s64 i{1}; i < n; ++i) cin >> a[i] >> b[i] >> c[i];
+  vector<s64> cnts(n);
+  for (s64 i{0}; i < m - 1; ++i) {
+    auto p0{p[i]};
+    auto p1{p[i + 1]};
+    if (p0 > p1) swap(p0, p1);
+    ++cnts[p0];
+    --cnts[p1];
+  }
+  s64 ans{0};
+  s64 cnt{0};
+  for (s64 i{1}; i < n; ++i) {
+    cnt += cnts[i];
+    ans += min(a[i] * cnt, b[i] * cnt + c[i]);
+  }
+
+  cout << ans << endl;
 }
