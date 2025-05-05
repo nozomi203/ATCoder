@@ -1,0 +1,108 @@
+{
+  "contest": {
+    "id": "s8pc-5",
+    "title": "square869120Contest #5",
+    "url": "https://atcoder.jp/contests/s8pc-5"
+  },
+  "tasks": [
+    {
+      "id": "s8pc_5_a",
+      "label": "A",
+      "title": "Sushi 2",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_5_b",
+      "label": "B",
+      "title": "Emblem",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_5_c",
+      "label": "C",
+      "title": "Two Parentheses ",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_5_d",
+      "label": "D",
+      "title": "Battle with E869120!",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_5_e",
+      "label": "E",
+      "title": "Broken Skateboard",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_5_f",
+      "label": "F",
+      "title": "Lunch Menu",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_f",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_5_g",
+      "label": "G",
+      "title": "Snake Escaping 2",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_g",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_5_h",
+      "label": "H",
+      "title": "Percepts of Atcoder",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_h",
+      "directory": {
+        "path": "h",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_5_i",
+      "label": "I",
+      "title": "Collecting Gems is Fun",
+      "url": "https://atcoder.jp/contests/s8pc-5/tasks/s8pc_5_i",
+      "directory": {
+        "path": "i",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}

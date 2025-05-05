@@ -1,0 +1,97 @@
+{
+  "contest": {
+    "id": "s8pc-3",
+    "title": "square869120Contest #3",
+    "url": "https://atcoder.jp/contests/s8pc-3"
+  },
+  "tasks": [
+    {
+      "id": "s8pc_3_a",
+      "label": "A",
+      "title": "Calendar",
+      "url": "https://atcoder.jp/contests/s8pc-3/tasks/s8pc_3_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_3_b",
+      "label": "B",
+      "title": "Falling Stone Game",
+      "url": "https://atcoder.jp/contests/s8pc-3/tasks/s8pc_3_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_3_c",
+      "label": "C",
+      "title": "Solving XOR-Puzzles",
+      "url": "https://atcoder.jp/contests/s8pc-3/tasks/s8pc_3_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_3_d",
+      "label": "D",
+      "title": "Souvenirs",
+      "url": "https://atcoder.jp/contests/s8pc-3/tasks/s8pc_3_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_3_e",
+      "label": "E",
+      "title": "Circle and Many Triangles",
+      "url": "https://atcoder.jp/contests/s8pc-3/tasks/s8pc_3_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_3_f",
+      "label": "F",
+      "title": "Sushi",
+      "url": "https://atcoder.jp/contests/s8pc-3/tasks/s8pc_3_f",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_3_g",
+      "label": "G",
+      "title": "Sum of Fibonacci Sequence",
+      "url": "https://atcoder.jp/contests/s8pc-3/tasks/s8pc_3_g",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "s8pc_3_h",
+      "label": "H",
+      "title": "Bombs Searching Game",
+      "url": "https://atcoder.jp/contests/s8pc-3/tasks/s8pc_3_h",
+      "directory": {
+        "path": "h",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
