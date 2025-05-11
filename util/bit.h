@@ -9,18 +9,11 @@ namespace util {
 
 /// @brief get the most significant bit of 64bit integer v
 template <std::unsigned_integral Int>
-constexpr uint64_t msb(uint64_t v) {
+constexpr Int msb(Int v) {
   for (Int shift = 1; shift < sizeof(Int); shift <<= 1) v |= (v >> shift);
   return v ^ (v >> 1);
 }
 
-template <std::unsigned_integral Int>
-constexpr Int bit_reverse(Int v) {
-  assert(false);
-  return {};
-}
-
-template <>
 constexpr uint32_t bit_reverse(uint32_t v) {
   v = (v & 0x55555555) << 1 | (v >> 1 & 0x55555555);
   v = (v & 0x33333333) << 1 | (v >> 1 & 0x33333333);
@@ -30,7 +23,6 @@ constexpr uint32_t bit_reverse(uint32_t v) {
   return v;
 }
 
-template <>
 constexpr uint64_t bit_reverse(uint64_t v) {
   v = (v & 0x5555555555555555) << 1 | (v >> 1 & 0x5555555555555555);
   v = (v & 0x3333333333333333) << 1 | (v >> 1 & 0x3333333333333333);
