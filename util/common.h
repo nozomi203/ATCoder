@@ -16,3 +16,8 @@ template <typename... Ts>
 void cin_tuple(tuple<Ts...>& t) {
   cin_tuple_impl(t, index_sequence_for<Ts...>{});
 }
+
+template <typename First, typename Second>
+void cin_pair(pair<First, Second>& p) {
+  cin >> p.first >> p.second;
+}
