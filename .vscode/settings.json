@@ -124,7 +124,8 @@
         "lazysegtree": "cpp",
         "all": "cpp",
         "math": "cpp",
-        "dsu": "cpp"
+        "dsu": "cpp",
+        "maxflow": "cpp"
     },
     "C_Cpp.clang_format_fallbackStyle": "Google",
     "C_Cpp.formatting": "clangFormat"
