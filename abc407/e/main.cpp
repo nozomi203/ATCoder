@@ -3,19 +3,23 @@
 int main() {
   s64 t;
   cin >> t;
-
+  vector<vector<s64>> as(t);
   for (size_t i{0}; i < t; ++i) {
     s64 n;
     cin >> n;
-    vector<s64> a(2 * n);
-    for (s64 i{0}; i < 2 * n; ++i) cin >> a[i];
-    vector<s64> dp(2 * n, -1);
-    dp[2 * n - 1] = -1;
-    dp[2 * n - 2] = a[2 * n - 2];
-    for (s64 i{2 * n - 3}; i >= 0; --i) {
-      if (dp[i + 1] >= 0) dp[i] = max(dp[i], a[i] + dp[i + 1]);
-      if (dp[i + 2] >= 0) dp[i] = max(dp[i], a[i] + dp[i + 2]);
+    as[i].resize(2 * n);
+    for (size_t j{0}; j < 2 * n; ++j) cin >> as[i][j];
+  }
+  for (size_t i{0}; i < t; ++i) {
+    const auto& a{as[i]};
+    priority_queue<s64> q;
+    s64 ans{a[0]};
+    for (s64 i{0}; i < a.size() / 2 - 1; ++i) {
+      q.push(a[2 * i + 1]);
+      q.push(a[2 * i + 2]);
+      ans += q.top();
+      q.pop();
     }
-    cout << dp[0] << endl;
+    cout << ans << endl;
   }
 }
