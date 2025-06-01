@@ -1,0 +1,53 @@
+{
+  "contest": {
+    "id": "arc092",
+    "title": "AtCoder Regular Contest 092",
+    "url": "https://atcoder.jp/contests/arc092"
+  },
+  "tasks": [
+    {
+      "id": "arc092_a",
+      "label": "C",
+      "title": "2D Plane 2N Points",
+      "url": "https://atcoder.jp/contests/arc092/tasks/arc092_a",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "arc092_b",
+      "label": "D",
+      "title": "Two Sequences",
+      "url": "https://atcoder.jp/contests/arc092/tasks/arc092_b",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "arc092_c",
+      "label": "E",
+      "title": "Both Sides Merger",
+      "url": "https://atcoder.jp/contests/arc092/tasks/arc092_c",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "arc092_d",
+      "label": "F",
+      "title": "Two Faced Edges",
+      "url": "https://atcoder.jp/contests/arc092/tasks/arc092_d",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
