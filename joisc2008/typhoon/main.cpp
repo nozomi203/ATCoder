@@ -27,28 +27,23 @@ int main() {
   }
 
   // クエリ上書き
-  for (auto& [p, q, r] : pqrs) p = idx_map[p];
+  for (auto& [p, q, r] : pqrs) {
+    p = idx_map[p];
+    --q;
+    --r;
+  }
 
+  constexpr size_t invalid = numeric_limits<size_t>::max();
   // 台風の範囲を上書き
-  for (auto it_ab = abs.begin(); it_ab != abs.end();) {
-    auto& [a, b] = *it_ab;
+  for (auto& [a, b] : abs) {
     {
       auto it = idx_map.lower_bound(a);
-      if (it == idx_map.end()) {
-        it_ab = abs.erase(it_ab);
-        continue;
-      }
-      a = it->second;
+      a = it == idx_map.end() ? invalid : it->second;
     }
     {
       auto it = idx_map.upper_bound(b);
-      if (it == idx_map.begin()) {
-        it_ab = abs.erase(it_ab);
-        continue;
-      }
-      b = prev(it)->second;
+      b = it == idx_map.begin() ? invalid : prev(it)->second;
     }
-    ++it_ab;
   }
 
   // 現実的な範囲になったのでlst
@@ -60,11 +55,25 @@ int main() {
                         []() -> size_t { return 0; }>
       lst(idx_map.size());
 
-  for (auto [a, b] : abs) {
+  vector<vector<size_t>> list(n);
+  map<pair<size_t, size_t>, size_t> values;
+  for (auto [p, q, r] : pqrs) {
+    if (q > 0) list[q - 1].push_back(p);
+    list[r].push_back(p);
+  }
+
+  for (size_t i{0}; i < n; ++i) {
+    const auto [a, b] = abs[i];
+    if (a == invalid || b == invalid) continue;
     lst.apply(a, b + 1, 1);
+    for (auto k : list[i]) {
+      values[make_pair(i, k)] = lst.prod(k, k + 1);
+    }
   }
 
   for (auto [p, q, r] : pqrs) {
-    cout <<
+    size_t ans = values[make_pair(r, p)];
+    if (q > 0) ans -= values[make_pair(q - 1, p)];
+    cout << ans << endl;
   }
 }
