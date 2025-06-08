@@ -8,73 +8,30 @@ int main() {
   vector<tuple<size_t, size_t, size_t>> xyzs(n);
   for (size_t i{0}; i < n; ++i) cin_tuple(xyzs[i]);
 
-  map<size_t, size_t> m;
-  for (auto [x, y, z] : xyzs) {
-    for (size_t i{1}; i < x; ++i) m.emplace(i * y * z, 0);
-    for (size_t i{1}; i < y; ++i) m.emplace(i * z * x, 0);
-    for (size_t i{1}; i < z; ++i) m.emplace(i * x * y, 0);
+  set<size_t> s;
+  set<pair<size_t, size_t>> sp;
+
+  const auto add = [&](size_t x1, size_t y1, size_t z1, size_t x2, size_t y2,
+                       size_t z2) -> void {
+    const size_t v1 = x1 * y1 * z1;
+    const size_t v2 = x2 * y2 * z2;
+    s.emplace(v1);
+    s.emplace(v2);
+    sp.emplace(make_pair(v1, v2));
+  };
+  for (const auto& [x, y, z] : xyzs) {
+    for (size_t i{1}; i < x; ++i) add(i, y, z, x - i, y, z);
+    for (size_t i{1}; i < y; ++i) add(x, i, z, x, y - i, z);
+    for (size_t i{1}; i < z; ++i) add(x, y, i, x, y, z - i);
   }
-  size_t idx{0};
-  for (auto& [k, v] : m) {
-    v = idx;
-    ++idx;
+  atcoder::mf_graph<size_t> mfg(16002);
+  for (auto v : s) {
+    mfg.add_edge(0, v, 1);
+    mfg.add_edge(v + 8000, 16001, 1);
   }
-
-  size_t cnt{0};
-  size_t cnt2{0};
-  cnt += 1;
-  cnt += 1;
-  cnt += n;
-  for (auto [x, y, z] : xyzs) {
-    cnt2 += x - 1;
-    cnt2 += y - 1;
-    cnt2 += z - 1;
-    cnt += cnt2;
-  }
-  cnt += m.size();
-  cnt += 1;
-
-  size_t cap_l{0};
-  size_t cap_r{2 * m.size()};
-  while (cap_r - cap_l > 1) {
-    const size_t cap_m{(cap_r + cap_l) / 2};
-    constexpr size_t inf = 100000000;
-    atcoder::mf_graph<size_t> mfg(cnt);
-    mfg.add_edge(0, 1, 2 * cap_m);
-
-    size_t idx{n + 2};
-    for (size_t i{0}; i < n; ++i) {
-      mfg.add_edge(1, i + 2, inf);
-      const auto [x, y, z] = xyzs[i];
-      for (size_t j{1}; j < x; ++j) {
-        mfg.add_edge(i + 2, idx, 2);
-        mfg.add_edge(idx, 2 + n + cnt2 + m.at(j * y * z), 1);
-        mfg.add_edge(idx, 2 + n + cnt2 + m.at((x - j) * y * z), 1);
-        ++idx;
-      }
-      for (size_t j{1}; j < y; ++j) {
-        mfg.add_edge(i + 2, idx, 2);
-        mfg.add_edge(idx, 2 + n + cnt2 + m.at(x * j * z), 1);
-        mfg.add_edge(idx, 2 + n + cnt2 + m.at(x * (y - j) * z), 1);
-        ++idx;
-      }
-      for (size_t j{1}; j < z; ++j) {
-        mfg.add_edge(i + 2, idx, 2);
-        mfg.add_edge(idx, 2 + n + cnt2 + m.at(x * y * j), 1);
-        mfg.add_edge(idx, 2 + n + cnt2 + m.at(x * y * (z - j)), 1);
-        ++idx;
-      }
-    }
-    for (const auto& [k, v] : m) {
-      mfg.add_edge(2 + n + cnt2 + v, cnt - 1, 2);
-    }
-
-    if (mfg.flow(0, cnt - 1) == 2 * m.size()) {
-      cap_r = cap_m;
-    } else {
-      cap_l = cap_m;
-    }
+  for (auto [v1, v2] : sp) {
+    mfg.add_edge(v1, v2 + 8000, 1);
   }
 
-  cout << cap_r << endl;
+  cout << s.size() * 2 - mfg.flow(0, 16001) << endl;
 }
