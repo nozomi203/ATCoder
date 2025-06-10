@@ -28,7 +28,7 @@ Ai)の注文がキャンセルされた場合それ以降の期日でAiの余裕
 int main() {
   size_t q, k;
   cin >> q >> k;
-  vector<tuple<size_t, size_t, size_t>> informations(q);
+  vector<tuple<int64_t, int64_t, int64_t>> informations(q);
   for (size_t i{0}; i < q; ++i) {
     auto& [a, b, c] = informations[i];
     cin >> a;
@@ -39,7 +39,7 @@ int main() {
     }
   }
 
-  vector<pair<size_t, size_t>> ccs;
+  vector<pair<int64_t, size_t>> ccs;
   {
     for (auto [idx, d, a] : informations) {
       ccs.push_back(make_pair(d, 0));
@@ -48,19 +48,79 @@ int main() {
     ccs.erase(unique(ccs.begin(), ccs.end()), ccs.end());
     for (size_t i{0}; i < ccs.size(); ++i) ccs[i].second = i;
     for (auto& [idx, d, a] : informations) {
-      d = lower_bound(ccs.begin(), ccs.end(), d, [](const auto& cc, size_t v) {
+      d = lower_bound(ccs.begin(), ccs.end(), d, [](const auto& cc, int64_t v) {
             cc.first < v;
           })->second;
     }
   }
 
   struct work {
-    size_t order;
-    size_t cap;
+    int64_t order;
+    int64_t capacity;
   };
 
   vector<work> works(ccs.size());
-  for (size_t i{0}; i < ccs.size(); ++i) {
-    works[i].cap = 2 * ccs[i].first;
+  for (size_t i{0}; i < q; ++i) {
+    const auto& [idx, d, a] = informations[i];
+    if (idx == 1) {
+      works[d].order += a;
+      works[d].capacity += a;
+    }
+  }
+
+  struct op {
+    int64_t diff_order;
+    int64_t diff_capacity;
+  };
+
+  {
+    /*
+    全部の注文がそろった状態でcapacityを計算する。
+    capacity = max(0, order - {その時点で残っている商品数})
+    */
+    size_t prod{0};
+    for (size_t i{0}; i < ccs.size(); ++i) {
+      prod += k * ((i > 0) ? ccs[i].first - ccs[i - 1].first : ccs[i].first);
+      if (works[i].order >= prod) {
+        works[i].capacity = works[i].order - prod;
+        prod = 0;
+      } else {
+        works[i].capacity = 0;
+        prod -= works[i].order;
+      }
+    }
+  }
+
+  atcoder::lazy_segtree<work,
+                        [](const work& s0, const work& s1) -> work {
+                          return work{s0.order + s1.order,
+                                      s0.capacity + s1.capacity};
+                        },
+                        []() -> work { return work{0, 0}; }, op,
+                        [](const op& f, const work& s) -> work {
+                          work ret{s};
+                          return work{
+                              s.order - f.diff_order,
+                              max<int64_t>(0, s.capacity - f.diff_capacity)};
+                        },
+                        [](const op& f0, const op& f1) -> op {
+                          return op{f0.diff_order + f1.diff_order,
+                                    f0.diff_capacity + f1.diff_capacity};
+                        },
+                        []() -> op { return op{0, 0}; }>
+      lst(works);
+
+  vector<size_t> answers;
+  for (auto rit{informations.rbegin()}; rit != informations.rend(); ++rit) {
+    const auto& [idx, d, a] = *rit;
+    if (idx == 1) {
+      // cancel order
+      work w = lst.get(d);
+      const int64_t rem = w.order - w.capacity;
+      w.order = w.capacity = w.order - a;
+      lst.set(d, w);
+
+    } else {
+    }
   }
 }
