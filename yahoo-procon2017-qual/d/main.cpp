@@ -1,6 +1,7 @@
 #include <atcoder/lazysegtree>
 
 #include "util/common.h"
+
 /*
 より期日の早い注文に対してgreedyに商品を販売する
 今までの注文のうち一番早い期日がDiだったとき、それよりも早い期日Djが来た時の再計算がネック
@@ -48,9 +49,11 @@ int main() {
     ccs.erase(unique(ccs.begin(), ccs.end()), ccs.end());
     for (size_t i{0}; i < ccs.size(); ++i) ccs[i].second = i;
     for (auto& [idx, d, a] : informations) {
-      d = lower_bound(ccs.begin(), ccs.end(), d, [](const auto& cc, int64_t v) {
-            cc.first < v;
-          })->second;
+      d = lower_bound(ccs.begin(), ccs.end(), d,
+                      [](const pair<int64_t, size_t>& cc, int64_t v) {
+                        return cc.first < v;
+                      })
+              ->second;
     }
   }
 
@@ -100,8 +103,8 @@ int main() {
                         [](const op& f, const work& s) -> work {
                           work ret{s};
                           return work{
-                              s.order - f.diff_order,
-                              max<int64_t>(0, s.capacity - f.diff_capacity)};
+                              s.order + f.diff_order,
+                              max<int64_t>(0, s.capacity + f.diff_capacity)};
                         },
                         [](const op& f0, const op& f1) -> op {
                           return op{f0.diff_order + f1.diff_order,
@@ -118,9 +121,27 @@ int main() {
       work w = lst.get(d);
       const int64_t rem = w.order - w.capacity;
       w.order = w.capacity = w.order - a;
-      lst.set(d, w);
-
+      if (rem <= w.capacity) {
+        w.capacity -= rem;
+        lst.set(d, w);
+      } else {
+        lst.set(d, w);
+        const size_t r = lst.max_right(
+            d, [rem](const work& w) { return w.capacity <= rem; });
+        const work w2 = lst.prod(d, r);
+        lst.apply(d, r, op{0, -10000000000});
+        if (r < works.size()) {
+          work w3 = lst.get(r);
+          w3.capacity -= rem - w2.capacity;
+          lst.set(r, w3);
+        }
+      }
     } else {
+      work w = lst.prod(0, d + 1);
+      answers.push_back(w.order - w.capacity);
     }
   }
+
+  for (auto rit{answers.rbegin()}; rit != answers.rend(); ++rit)
+    cout << *rit << endl;
 }
