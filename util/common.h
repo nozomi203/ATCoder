@@ -43,4 +43,5 @@ inline void cin(Iterator first, Iterator last) {
     util::cin(*it);
   }
 }
+
 }  // namespace util
