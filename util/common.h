@@ -7,17 +7,40 @@ using u64 = uint64_t;
 
 using namespace std;
 
+namespace util {
+
+template <typename T>
+inline void cin(T& t) {
+  std::cin >> t;
+}
+
 template <typename Tuple, std::size_t... I>
-void cin_tuple_impl(Tuple& t, std::index_sequence<I...>) {
-  ((std::cin >> std::get<I>(t)), ...);
+inline void cin_tuple_impl(Tuple& t, std::index_sequence<I...>) {
+  ((util::cin(std::get<I>(t))), ...);
 }
 
 template <typename... Ts>
-void cin_tuple(tuple<Ts...>& t) {
+inline void cin(tuple<Ts...>& t) {
   cin_tuple_impl(t, index_sequence_for<Ts...>{});
 }
 
 template <typename First, typename Second>
-void cin_pair(pair<First, Second>& p) {
-  cin >> p.first >> p.second;
+inline void cin(pair<First, Second>& p) {
+  util::cin(p.first);
+  util::cin(p.second);
 }
+
+template <typename T>
+inline void cin(vector<T>& v) {
+  for (auto& e : v) {
+    util::cin(e);
+  }
+}
+
+template <typename Iterator>
+inline void cin(Iterator first, Iterator last) {
+  for (auto it = first; it != last; ++it) {
+    util::cin(*it);
+  }
+}
+}  // namespace util
