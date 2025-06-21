@@ -11,10 +11,8 @@ int main() {
   for (s64 i{0}; i < m; ++i) {
     const auto k = ks[i];
     auto it = lower_bound(ds.begin(), ds.end(), k);
-    if (it == ds.end()) it = prev(ds.end());
-    const auto d0 = *it;
-    ++it;
-    const auto d1 = it == ds.end() ? d : *it;
+    const auto d0 = it != ds.begin() ? *prev(it) : *it;
+    const auto d1 = it != ds.end() ? *it : d;
     ans += min(abs(d0 - k), abs(d1 - k));
   }
   cout << ans << endl;
