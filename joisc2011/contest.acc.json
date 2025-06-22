@@ -1,0 +1,196 @@
+{
+  "contest": {
+    "id": "joisc2011",
+    "title": "JOI 2010-2011 日本代表選手選考会 (春合宿代替措置) 過去問",
+    "url": "https://atcoder.jp/contests/joisc2011"
+  },
+  "tasks": [
+    {
+      "id": "joisc2011_banner",
+      "label": "banner",
+      "title": "横断幕 (Banner)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_banner",
+      "directory": {
+        "path": "banner",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_dragon",
+      "label": "dragon",
+      "title": "ドラゴン (Dragon)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_dragon",
+      "directory": {
+        "path": "dragon",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_joitter",
+      "label": "joitter",
+      "title": "ジョイッター (Joitter)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_joitter",
+      "directory": {
+        "path": "joitter",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_guess",
+      "label": "guess",
+      "title": "数当て (Guess Them All)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_guess",
+      "directory": {
+        "path": "guess",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_keycards",
+      "label": "keycards",
+      "title": "カードキー (Keycards)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_keycards",
+      "directory": {
+        "path": "keycards",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_shiritori",
+      "label": "shiritori",
+      "title": "しりとり (Shiritori)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_shiritori",
+      "directory": {
+        "path": "shiritori",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_deciphering",
+      "label": "deciphering",
+      "title": "解読 (Deciphering)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_deciphering",
+      "directory": {
+        "path": "deciphering",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_report",
+      "label": "report",
+      "title": "報告 (Report)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_report",
+      "directory": {
+        "path": "report",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_ufo1",
+      "label": "ufo1",
+      "title": "UFOの飛行場 (UFO)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_ufo1",
+      "directory": {
+        "path": "ufo1",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_ufo2",
+      "label": "ufo2",
+      "title": "UFOの飛行場 (UFO)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_ufo2",
+      "directory": {
+        "path": "ufo2",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_ufo3",
+      "label": "ufo3",
+      "title": "UFOの飛行場 (UFO)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_ufo3",
+      "directory": {
+        "path": "ufo3",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_ufo4",
+      "label": "ufo4",
+      "title": "UFOの飛行場 (UFO)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_ufo4",
+      "directory": {
+        "path": "ufo4",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_ufo5",
+      "label": "ufo5",
+      "title": "UFOの飛行場 (UFO)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_ufo5",
+      "directory": {
+        "path": "ufo5",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_apples",
+      "label": "apples",
+      "title": "リンゴの出荷 (Apples)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_apples",
+      "directory": {
+        "path": "apples",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_bookshelf",
+      "label": "bookshelf",
+      "title": "本棚 (Bookshelf)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_bookshelf",
+      "directory": {
+        "path": "bookshelf",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_ioi",
+      "label": "ioi",
+      "title": "国際情報オリンピック (IOI)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_ioi",
+      "directory": {
+        "path": "ioi",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2011_orienteering",
+      "label": "orienteering",
+      "title": "オリエンテーリング (Orienteering)",
+      "url": "https://atcoder.jp/contests/joisc2011/tasks/joisc2011_orienteering",
+      "directory": {
+        "path": "orienteering",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
