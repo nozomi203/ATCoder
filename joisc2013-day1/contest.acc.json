@@ -1,0 +1,53 @@
+{
+  "contest": {
+    "id": "joisc2013-day1",
+    "title": "2013年 日本情報オリンピック春合宿 1日目",
+    "url": "https://atcoder.jp/contests/joisc2013-day1"
+  },
+  "tasks": [
+    {
+      "id": "joisc2013_bustour",
+      "label": "1",
+      "title": "バスの乗り継ぎ (Bus Tour)",
+      "url": "https://atcoder.jp/contests/joisc2013-day1/tasks/joisc2013_bustour",
+      "directory": {
+        "path": "1",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2013_collecting",
+      "label": "2",
+      "title": "たのしい画像収集 (Collecting Images is Fun)",
+      "url": "https://atcoder.jp/contests/joisc2013-day1/tasks/joisc2013_collecting",
+      "directory": {
+        "path": "2",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2013_communication",
+      "label": "3",
+      "title": "通信妨害 (Communication Jamming)",
+      "url": "https://atcoder.jp/contests/joisc2013-day1/tasks/joisc2013_communication",
+      "directory": {
+        "path": "3",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2013_joi_poster",
+      "label": "4",
+      "title": "JOIポスター (JOI Poster)",
+      "url": "https://atcoder.jp/contests/joisc2013-day1/tasks/joisc2013_joi_poster",
+      "directory": {
+        "path": "4",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}

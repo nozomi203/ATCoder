@@ -1,0 +1,152 @@
+{
+  "contest": {
+    "id": "joisc2014",
+    "title": "JOI春合宿2014 オンラインジャッジ",
+    "url": "https://atcoder.jp/contests/joisc2014"
+  },
+  "tasks": [
+    {
+      "id": "joisc2014_a",
+      "label": "A",
+      "title": "バス通学",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_b",
+      "label": "B",
+      "title": "たのしい家庭菜園",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_c",
+      "label": "C",
+      "title": "歴史の研究",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_d",
+      "label": "D",
+      "title": "ラーメンの食べ比べ",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_e",
+      "label": "E",
+      "title": "水筒",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_f",
+      "label": "F",
+      "title": "友だちをつくろう",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_f",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_g",
+      "label": "G",
+      "title": "スタンプラリー",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_g",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_h",
+      "label": "H",
+      "title": "JOIOJI",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_h",
+      "directory": {
+        "path": "h",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_i",
+      "label": "I",
+      "title": "かかし",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_i",
+      "directory": {
+        "path": "i",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_j",
+      "label": "J",
+      "title": "電圧",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_j",
+      "directory": {
+        "path": "j",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_k",
+      "label": "K",
+      "title": "二人の星座",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_k",
+      "directory": {
+        "path": "k",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_l",
+      "label": "L",
+      "title": "漢字しりとり",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_l",
+      "directory": {
+        "path": "l",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2014_m",
+      "label": "M",
+      "title": "ストラップ",
+      "url": "https://atcoder.jp/contests/joisc2014/tasks/joisc2014_m",
+      "directory": {
+        "path": "m",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}

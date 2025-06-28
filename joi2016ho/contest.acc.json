@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "joi2016ho",
+    "title": "第１５回日本情報オリンピック 本選（過去問）",
+    "url": "https://atcoder.jp/contests/joi2016ho"
+  },
+  "tasks": [
+    {
+      "id": "joi2016ho_a",
+      "label": "A",
+      "title": "オレンジの出荷 (Oranges)",
+      "url": "https://atcoder.jp/contests/joi2016ho/tasks/joi2016ho_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2016ho_b",
+      "label": "B",
+      "title": "スタンプラリー 2 (Collecting Stamps 2)",
+      "url": "https://atcoder.jp/contests/joi2016ho/tasks/joi2016ho_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2016ho_c",
+      "label": "C",
+      "title": "鉄道運賃 (Train Fare)",
+      "url": "https://atcoder.jp/contests/joi2016ho/tasks/joi2016ho_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2016ho_d",
+      "label": "D",
+      "title": "縄張り (Territory)",
+      "url": "https://atcoder.jp/contests/joi2016ho/tasks/joi2016ho_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2016ho_e",
+      "label": "E",
+      "title": "断層 (Geologic Fault)",
+      "url": "https://atcoder.jp/contests/joi2016ho/tasks/joi2016ho_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
