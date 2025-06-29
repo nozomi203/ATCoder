@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "joi2020ho",
+    "title": "JOI 2019/2020 本選 過去問",
+    "url": "https://atcoder.jp/contests/joi2020ho"
+  },
+  "tasks": [
+    {
+      "id": "joi2020ho_a",
+      "label": "A",
+      "title": "長いだけのネクタイ (Just Long Neckties)",
+      "url": "https://atcoder.jp/contests/joi2020ho/tasks/joi2020ho_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2020ho_b",
+      "label": "B",
+      "title": "JJOOII 2 (JJOOII 2)",
+      "url": "https://atcoder.jp/contests/joi2020ho/tasks/joi2020ho_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2020ho_c",
+      "label": "C",
+      "title": "スタンプラリー 3 (Collecting Stamps 3)",
+      "url": "https://atcoder.jp/contests/joi2020ho/tasks/joi2020ho_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2020ho_d",
+      "label": "D",
+      "title": "オリンピックバス (Olympic Bus)",
+      "url": "https://atcoder.jp/contests/joi2020ho/tasks/joi2020ho_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2020ho_e",
+      "label": "E",
+      "title": "火事 (Fire)",
+      "url": "https://atcoder.jp/contests/joi2020ho/tasks/joi2020ho_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
