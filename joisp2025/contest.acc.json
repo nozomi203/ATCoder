@@ -1,0 +1,81 @@
+{
+  "contest": {
+    "id": "joisp2025",
+    "title": "JOI 2024/2025 Spring Training",
+    "url": "https://atcoder.jp/contests/joisp2025"
+  },
+  "tasks": [
+    {
+      "id": "joisp2025_a",
+      "label": "A",
+      "title": "展覧会 3 (Exhibition 3)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_a"
+    },
+    {
+      "id": "joisp2025_b",
+      "label": "B",
+      "title": "占い 3 (Fortune Telling 3)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_b"
+    },
+    {
+      "id": "joisp2025_c",
+      "label": "C",
+      "title": "ビ太郎の旅 2 (Bitaro's Travel 2)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_c"
+    },
+    {
+      "id": "joisp2025_d",
+      "label": "D",
+      "title": "救急車 (Ambulance)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_d"
+    },
+    {
+      "id": "joisp2025_e",
+      "label": "E",
+      "title": "スタンプラリー 4 (Collecting Stamps 4)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_e"
+    },
+    {
+      "id": "joisp2025_f",
+      "label": "F",
+      "title": "宇宙怪盗 (Space Thief)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_f"
+    },
+    {
+      "id": "joisp2025_g",
+      "label": "G",
+      "title": "勇者ビ太郎 3 (Bitaro the Brave 3)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_g"
+    },
+    {
+      "id": "joisp2025_h",
+      "label": "H",
+      "title": "会議 (Conference)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_h"
+    },
+    {
+      "id": "joisp2025_i",
+      "label": "I",
+      "title": "マルチコミュニケーション (Multi Communication)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_i"
+    },
+    {
+      "id": "joisp2025_j",
+      "label": "J",
+      "title": "電子回路 2 (Circuit 2)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_j"
+    },
+    {
+      "id": "joisp2025_k",
+      "label": "K",
+      "title": "移住計画 (Migration Plan)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_k"
+    },
+    {
+      "id": "joisp2025_l",
+      "label": "L",
+      "title": "ういろう (Uiro)",
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_l"
+    }
+  ]
+}
