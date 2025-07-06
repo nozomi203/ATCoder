@@ -24,47 +24,70 @@ int main() {
   vector<s64> ps(q);
   util::cin(ps);
 
-  struct node {
-    s64 depth;
-    s64 idx;
-    char c;
-  };
-
-  const s64 total = (pow(3, n + 1) - 1) / 2;
-
-  vector<node> nodes(total);
-
-  const auto update_node = [&](node& node) {
-    s64 cnta = 0;
-    const s64 offst = (pow(3, node.depth - 1) - 1) / 2;
-    if (nodes[offst + 0].c == 'A') ++cnta;
-    if (nodes[offst + 1].c == 'A') ++cnta;
-    if (nodes[offst + 2].c == 'A') ++cnta;
-    node.c = cnta > 1 ? 'A' : 'B';
-  };
-
-  for (s64 i = 0; i < t.size(); ++i) {
-    nodes.push_back(node{n, i, t[i]});
+  vector<s64> cnts(n + 1);
+  {
+    cnts[0] = 1;
+    for (s64 i = 1; i <= n; ++i) {
+      cnts[i] = cnts[i - 1] * 3;
+    }
+  }
+  vector<s64> sum_cnts(n + 1);
+  sum_cnts[0] = cnts[0];
+  for (s64 i = 1; i <= n; ++i) {
+    sum_cnts[i] = sum_cnts[i - 1] + cnts[i];
   }
 
-  s64 cnt = pow(3, n);
-  s64 offst = cnt;
-  for (s64 d = n - 1; d >= 0; --d) {
-    cnt /= 3;
-
-    for (s64 i = 0; i < cnt; ++i) {
-      nodes[offst + i].depth = d;
-      nodes[offst + i].idx = i;
-      update_node(nodes[offst + i]);
+  const size_t nc = (pow(3, n + 1) - 1) / 2;
+  vector<char> ds(nc);
+  vector<s64> idxs(nc);
+  {
+    s64 offset = 0;
+    for (s64 d = 0; d <= n; ++d) {
+      for (s64 i = 0; i < cnts[d]; ++i) {
+        ds[i + offset] = d;
+        idxs[i + offset] = i;
+      }
+      offset += cnts[d];
     }
-    offst += cnt;
+  }
+
+  const auto get_parent = [&](s64 i) -> s64 {
+    if (i == 0) return -1;
+    if (ds[i] == 1) return 0;
+    s64 d = ds[i] - 1;
+    s64 idx = idxs[i] / 3;
+    return sum_cnts[d - 1] + idx;
+  };
+
+  const auto get_child = [&](s64 i) -> s64 {
+    if (ds[i] == n) return -1;
+    s64 d = ds[i] + 1;
+    s64 idx = idxs[i] * 3;
+    return sum_cnts[d - 1] + idx;
+  };
+
+  vector<char> cs(nc);
+  for (s64 i = 0; i < pow(3, n); ++i) cs[sum_cnts[n - 1] + i] = t[i];
+  for (s64 i = nc - pow(3, n) - 1; i >= 0; --i) {
+    s64 cnta = 0;
+    if (cs[get_child(i) + 0] == 'A') ++cnta;
+    if (cs[get_child(i) + 1] == 'A') ++cnta;
+    if (cs[get_child(i) + 2] == 'A') ++cnta;
+    cs[i] = cnta > 1 ? 'A' : 'B';
   }
 
   for (auto p : ps) {
-    nodes[p - 1].c = nodes[p - 1].c == 'A' ? 'B' : 'A';
-    node* pn = nodes[nodes[p-1].depth;
-    while (pn != nullptr) {
-      update_node(*pn);
+    s64 i = sum_cnts[n - 1] + p - 1;
+    cs[i] = cs[i] == 'A' ? 'B' : 'A';
+    s64 par = get_parent(i);
+    while (par >= 0) {
+      s64 cnta = 0;
+      if (cs[get_child(par) + 0] == 'A') ++cnta;
+      if (cs[get_child(par) + 1] == 'A') ++cnta;
+      if (cs[get_child(par) + 2] == 'A') ++cnta;
+      cs[par] = cnta > 1 ? 'A' : 'B';
+      par = get_parent(par);
     }
+    cout << cs[0] << endl;
   }
 }
