@@ -44,4 +44,14 @@ inline void cin(Iterator first, Iterator last) {
   }
 }
 
+template <typename T>
+inline void sort(vector<T>& v) {
+  std::sort(v.begin(), v.end());
+}
+
+template <typename T, typename Compare>
+inline void sort(vector<T>& v, Compare comp) {
+  std::sort(v.begin(), v.end(), std::forward(comp));
+}
+
 }  // namespace util
