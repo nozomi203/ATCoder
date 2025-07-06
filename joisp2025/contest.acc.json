@@ -9,73 +9,133 @@
       "id": "joisp2025_a",
       "label": "A",
       "title": "展覧会 3 (Exhibition 3)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_a"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_b",
       "label": "B",
       "title": "占い 3 (Fortune Telling 3)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_b"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_c",
       "label": "C",
       "title": "ビ太郎の旅 2 (Bitaro's Travel 2)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_c"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_d",
       "label": "D",
       "title": "救急車 (Ambulance)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_d"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_e",
       "label": "E",
       "title": "スタンプラリー 4 (Collecting Stamps 4)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_e"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_f",
       "label": "F",
       "title": "宇宙怪盗 (Space Thief)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_f"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_f",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_g",
       "label": "G",
       "title": "勇者ビ太郎 3 (Bitaro the Brave 3)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_g"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_g",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_h",
       "label": "H",
       "title": "会議 (Conference)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_h"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_h",
+      "directory": {
+        "path": "h",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_i",
       "label": "I",
       "title": "マルチコミュニケーション (Multi Communication)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_i"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_i",
+      "directory": {
+        "path": "i",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_j",
       "label": "J",
       "title": "電子回路 2 (Circuit 2)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_j"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_j",
+      "directory": {
+        "path": "j",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_k",
       "label": "K",
       "title": "移住計画 (Migration Plan)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_k"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_k",
+      "directory": {
+        "path": "k",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     },
     {
       "id": "joisp2025_l",
       "label": "L",
       "title": "ういろう (Uiro)",
-      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_l"
+      "url": "https://atcoder.jp/contests/joisp2025/tasks/joisp2025_l",
+      "directory": {
+        "path": "l",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
     }
   ]
 }
