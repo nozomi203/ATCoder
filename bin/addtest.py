@@ -7,6 +7,9 @@ def get_filename_in(number):
 def get_filename_out(number):
     return os.path.join("tests", f"sample-{number}.out")
 
+if not os.path.isdir("tests"):
+    os.mkdir("tests")
+
 if os.path.isdir("tests"):
     matcher_in = re.compile(r"sample-(\d+)\.in$")
     matcher_out = re.compile(r"sample-(\d+)\.out$")
@@ -27,12 +30,14 @@ if os.path.isdir("tests"):
     new_number = max_common_number + 1
 
     with open(get_filename_in(new_number), "w") as f:
-        with open(get_filename_in(max_common_number), "r") as src:
-            f.write(src.read())
+        if os.path.exists(get_filename_in(max_common_number)):
+            with open(get_filename_in(max_common_number), "r") as src:
+                f.write(src.read())
         pass
     with open(get_filename_out(new_number), "w") as f:
-        with open(get_filename_out(max_common_number), "r") as src:
-            f.write(src.read())
+        if os.path.exists(get_filename_out(max_common_number)):
+            with open(get_filename_out(max_common_number), "r") as src:
+                f.write(src.read())
         pass
     print(f"created new test files: {get_filename_in(new_number)} and {get_filename_out(new_number)}")
 
