@@ -16,8 +16,13 @@ int main() {
 
   vector<vector<s64>> roots(n + 1, vector<s64>(h + 1));
   for (s64 i = 1; i <= n; ++i) roots[i][0] = i;
-  for (s64 j = 1; j <= h; ++j) {
+  for (s64 j = 0; j < h; ++j) {
     for (s64 i = 1; i <= n; ++i) {
+      if (conns[i][j] != -1) {
+        roots[conns[i][j]][j + 1] = roots[i][j];
+      } else {
+        roots[i][j + 1] = roots[i][j];
+      }
     }
   }
   /*
@@ -34,4 +39,17 @@ int main() {
       }
     }
   }
+  s64 sum = 0;
+  for (s64 i = 1; i <= k; ++i) sum += dp[i][0];
+  s64 min_diff = 0;
+  for (auto [a, b] : abs) {
+    auto a0 = a;
+    auto a1 = a + 1;
+    if (roots[a0][b] <= k && roots[a1][b] <= k) continue;
+    if (roots[a0][b] > k && roots[a1][b] > k) continue;
+    if (roots[a1][b] <= k) swap(a0, a1);  // a0 should be in range
+    s64 diff = dp[roots[a1][b]][0] - dp[roots[a0][b]][0];
+    min_diff = min(min_diff, diff);
+  }
+  cout << sum + min_diff << endl;
 }
