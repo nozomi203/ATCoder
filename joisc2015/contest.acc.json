@@ -1,0 +1,152 @@
+{
+  "contest": {
+    "id": "joisc2015",
+    "title": "JOI春合宿2015 オンラインジャッジ",
+    "url": "https://atcoder.jp/contests/joisc2015"
+  },
+  "tasks": [
+    {
+      "id": "joisc2015_a",
+      "label": "A",
+      "title": "コピー&ペースト 2",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_b",
+      "label": "B",
+      "title": "愉快なロゴデザイン",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_c",
+      "label": "C",
+      "title": "たのしいたのしい家庭菜園",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_d",
+      "label": "D",
+      "title": "IOIOI カード占い",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_e",
+      "label": "E",
+      "title": "ビルの飾りつけ 3",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_f",
+      "label": "F",
+      "title": "合鍵",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_f",
+      "directory": {
+        "path": "f",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_g",
+      "label": "G",
+      "title": "道路整備",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_g",
+      "directory": {
+        "path": "g",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_h",
+      "label": "H",
+      "title": "AAQQZ",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_h",
+      "directory": {
+        "path": "h",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_i",
+      "label": "I",
+      "title": "とてもたのしいカードゲーム",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_i",
+      "directory": {
+        "path": "i",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_j",
+      "label": "J",
+      "title": "道案内",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_j",
+      "directory": {
+        "path": "j",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_k",
+      "label": "K",
+      "title": "遺産相続",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_k",
+      "directory": {
+        "path": "k",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_l",
+      "label": "L",
+      "title": "記憶縛り",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_l",
+      "directory": {
+        "path": "l",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2015_m",
+      "label": "M",
+      "title": "防壁",
+      "url": "https://atcoder.jp/contests/joisc2015/tasks/joisc2015_m",
+      "directory": {
+        "path": "m",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
