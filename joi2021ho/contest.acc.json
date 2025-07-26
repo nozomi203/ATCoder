@@ -1,0 +1,64 @@
+{
+  "contest": {
+    "id": "joi2021ho",
+    "title": "JOI 2020/2021 本選 過去問",
+    "url": "https://atcoder.jp/contests/joi2021ho"
+  },
+  "tasks": [
+    {
+      "id": "joi2021ho_a",
+      "label": "A",
+      "title": "とてもたのしい家庭菜園 (Growing Vegetables is Fun 4)",
+      "url": "https://atcoder.jp/contests/joi2021ho/tasks/joi2021ho_a",
+      "directory": {
+        "path": "a",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2021ho_b",
+      "label": "B",
+      "title": "雪玉 (Snowball)",
+      "url": "https://atcoder.jp/contests/joi2021ho/tasks/joi2021ho_b",
+      "directory": {
+        "path": "b",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2021ho_c",
+      "label": "C",
+      "title": "集合写真 (Group Photo)",
+      "url": "https://atcoder.jp/contests/joi2021ho/tasks/joi2021ho_c",
+      "directory": {
+        "path": "c",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2021ho_d",
+      "label": "D",
+      "title": "ロボット (Robot)",
+      "url": "https://atcoder.jp/contests/joi2021ho/tasks/joi2021ho_d",
+      "directory": {
+        "path": "d",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joi2021ho_e",
+      "label": "E",
+      "title": "ダンジョン 3 (Dungeon 3)",
+      "url": "https://atcoder.jp/contests/joi2021ho/tasks/joi2021ho_e",
+      "directory": {
+        "path": "e",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
