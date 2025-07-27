@@ -21,35 +21,30 @@ int main() {
   }
 
   const auto inf = numeric_limits<s64>::max();
-  vector<vector<s64>> rds(n + 1, vector<s64>(n + 1, inf));
-  vector<vector<s64>> aps(n + 1, vector<s64>(n + 1, inf));
 
+  vector<vector<pair<s64, s64>>> g(n + 2);
+  const s64 airport = n + 1;
+
+  vector<vector<s64>> dists(n + 2, vector<s64>(n + 2, inf));
   for (auto [a, b, c] : abcs) {
-    rds[a][b] = rds[b][c] = c;
+    g[a].push_back(make_pair(c, b));
+    g[b].push_back(make_pair(c, a));
+    dists[a][b] = dists[b][a] = c;
   }
-  for (size_t i = 0; i < k; ++i) {
-    for (size_t j = 0; j < k; ++k) {
-      if (i == j) continue;
-      aps[i][j] = t;
-    }
-  }
-
-  for (auto [a, b, c, d] : queries) {
-    if (a == 1) {
-      rds[b][c] = rds[c][b] = d;
-    } else if (a == 2) {
-      for (auto d : ds) aps[d][b] = aps[b][d] = t;
-      ds.push_back(b);
-    }
+  for (auto d : ds) {
+    g[d].push_back(make_pair(t, airport));
+    g[airport].push_back(make_pair(0, d));
+    dists[d][airport] = t;
+    dists[airport][d] = 0;
   }
 
-  reverse(queries.begin(), queries.end());
-  for (auto [a, b, c, d] : queries) {
-    if (a == 1) {
-      rds[b][c] = rds[c][b] = d;
-    } else if (a == 2) {
-      for (auto d : ds) aps[d][b] = aps[b][d] = t;
-      ds.push_back(b);
+  const auto update = [&]() -> void {
+
+  };
+
+  for (auto [q0, q1, q2, q3] : queries) {
+    if (q0 == 1) {
+    } else if (q0 == 2) {
     } else {
     }
   }
