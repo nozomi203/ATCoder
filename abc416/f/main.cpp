@@ -23,13 +23,13 @@ int main() {
     q.push(0);
     while (!q.empty()) {
       const s64 cur = q.front();
+      q.pop();
       for (s64 i = 0; i < g[cur].size(); ++i) {
         const auto nxt = g[cur][i];
-        if (ps[nxt] < 0) {
-          ps.push_back(nxt);
+        if (nxt != ps[cur]) {
+          q.push(nxt);
+          ps[nxt] = cur;
           idxs[nxt] = i;
-        } else {
-          ps[cur] = nxt;
         }
       }
     }
@@ -42,10 +42,14 @@ int main() {
       if (ps[j] < 0 || used[ps[j]]) s.push(j);
 
     vector<vector<s64>> sumamaxs(n); /*頂点iのj番目の辺の先のaの合計の最大*/
+    for (size_t i = 0; i < n; ++i) sumamaxs[i].resize(g[i].size());
     vector<bool> visited(n);
+
+    /**/
     while (!s.empty()) {
       auto cur = s.top();
       if (visited[cur]) {
+        s.pop();
         for (s64 j = 0; j < g[cur].size(); ++j) {
           auto nxt = g[cur][j];
           if (used[nxt]) continue;

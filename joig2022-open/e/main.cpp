@@ -12,12 +12,33 @@ int main() {
 
   const auto ninf = numeric_limits<s64>::lowest();
 
-  s64 mina = 0;
-  s64 maxsumv = ninf;
-  s64 maxsumv_sub = ninf;
-  vector<s64> dp(m + 1, ninf);
+  s64 maxa = -1;
+  s64 maxsumv = 0;
+  s64 maxa_sub = -2;
+  s64 maxsumv_sub = 0;
+  vector<s64> dp(m + 1, 0);
   for (auto [a, v] : avs) {
-    s64 sumv = a == mina ? maxsumv_sub : maxsumv;
-    dp[a] = sumv == ninf ? v
+    s64 sumv = a == maxa ? maxsumv_sub : maxsumv;
+    sumv =  sumv + v;
+    if (dp[a] < sumv) {
+      dp[a] = sumv;
+      if (maxsumv < dp[a]) {
+        if (maxa != a) {
+          if (maxsumv_sub < maxsumv) {
+            maxsumv_sub = maxsumv;
+            maxa_sub = maxa;
+          }
+        }
+        maxa = a;
+        maxsumv = dp[a];
+      } else if (maxsumv_sub < dp[a]) {
+        if (maxa != a) {
+          maxsumv_sub = dp[a];
+          maxa_sub = maxa;
+        }
+      }
+    }
   }
+
+  cout << *max_element(dp.begin(), dp.end()) << endl;
 }
