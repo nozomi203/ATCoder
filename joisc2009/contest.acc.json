@@ -1,0 +1,141 @@
+{
+  "contest": {
+    "id": "joisc2009",
+    "title": "2009年 日本情報オリンピック春合宿OJ",
+    "url": "https://atcoder.jp/contests/joisc2009"
+  },
+  "tasks": [
+    {
+      "id": "joisc2009_sequence",
+      "label": "sequence",
+      "title": "数列 (Sequence)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_sequence",
+      "directory": {
+        "path": "sequence",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_stamps",
+      "label": "stamps",
+      "title": "判子 (はんこ) (Stamps)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_stamps",
+      "directory": {
+        "path": "stamps",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_pyramid",
+      "label": "pyramid",
+      "title": "貫きピラミッド (Pyramid)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_pyramid",
+      "directory": {
+        "path": "pyramid",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_abduction",
+      "label": "abduction",
+      "title": "誘拐 (Abduction)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_abduction",
+      "directory": {
+        "path": "abduction",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_advertisement",
+      "label": "advertisement",
+      "title": "宣伝 (Advertisement)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_advertisement",
+      "directory": {
+        "path": "advertisement",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_contest",
+      "label": "contest",
+      "title": "コンテスト (Contest)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_contest",
+      "directory": {
+        "path": "contest",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_territory",
+      "label": "territory",
+      "title": "縄張り (Territory)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_territory",
+      "directory": {
+        "path": "territory",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_ski",
+      "label": "ski",
+      "title": "スキー (Ski)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_ski",
+      "directory": {
+        "path": "ski",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_logo",
+      "label": "logo",
+      "title": "ロゴマーク (Logo)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_logo",
+      "directory": {
+        "path": "logo",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_distribution",
+      "label": "distribution",
+      "title": "冊子の配布 (Distribution)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_distribution",
+      "directory": {
+        "path": "distribution",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_chopsticks",
+      "label": "chopsticks",
+      "title": "塗り箸 (Chopsticks)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_chopsticks",
+      "directory": {
+        "path": "chopsticks",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    },
+    {
+      "id": "joisc2009_starry_sky",
+      "label": "starry_sky",
+      "title": "星空 (Starry Sky)",
+      "url": "https://atcoder.jp/contests/joisc2009/tasks/joisc2009_starry_sky",
+      "directory": {
+        "path": "starry_sky",
+        "testdir": "tests",
+        "submit": "main.cpp"
+      }
+    }
+  ]
+}
