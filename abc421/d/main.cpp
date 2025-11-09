@@ -19,21 +19,45 @@ int main() {
   util::cin(tbs);
 
   s64 ans = 0;
+
   s64 it = 0, ia = 0;
   while (it < m && ia < l) {
     auto [s, a] = sas[it];
     auto [t, b] = tbs[ia];
-    auto [drt, dct] = get_drc(s, min(a, b));
-    auto [dra, dca] = get_drc(t, min(a, b));
+    auto [drt, dct] = get_drc(s, 1);
+    auto [dra, dca] = get_drc(t, 1);
 
     if (drt == dra && dct == dca) {
-      if () } else {
+      if (rt == ra && ct == ca) {
+        ans += min(a, b);
+      }
+    } else if (drt == dra) {
+      if (rt == ra && (ct - ca) % (dct - dca) == 0) {
+        const s64 x = -(ct - ca) / (dct - dca);
+        if (x <= min(a, b) && x >= 1) {
+          ans++;
+        }
+      }
+    } else if (dct == dca) {
+      if (ct == ca && (rt - ra) % (drt - dra) == 0) {
+        const s64 x = -(rt - ra) / (drt - dra);
+        if (x <= min(a, b) && x >= 1) {
+          ans++;
+        }
+      }
+    } else {
+      if ((rt - ra) % (drt - dra) == 0 && (ct - ca) % (dct - dca) == 0) {
+        const s64 x0 = -(rt - ra) / (drt - dra);
+        const s64 x1 = -(ct - ca) / (dct - dca);
+        if (x0 == x1 && x0 <= min(a, b) && x0 >= 1) {
+          ans++;
+        }
+      }
     }
-
-    rt += drt;
-    ct += dct;
-    ra += dra;
-    ca += dca;
+    rt += drt * min(a, b);
+    ct += dct * min(a, b);
+    ra += dra * min(a, b);
+    ca += dca * min(a, b);
 
     if (a < b) {
       ++it;
