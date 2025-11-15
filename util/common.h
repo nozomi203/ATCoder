@@ -44,6 +44,11 @@ inline void cin(Iterator first, Iterator last) {
   }
 }
 
+template <typename... Ts>
+inline void cin(Ts&... ts) {
+  ((util::cin(ts)), ...);
+}
+
 template <typename T>
 inline void sort(vector<T>& v) {
   std::sort(v.begin(), v.end());
