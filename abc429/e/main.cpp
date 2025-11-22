@@ -33,31 +33,28 @@ int main() {
   };
   vector<pair<log_t, log_t>> logs(n);
 
-  queue<pair<s64, s64>> que;
+  queue<pair<s64, log_t>> que;
   for (s64 i = 0; i < n; ++i) {
     if (s[i] == 'S') {
-      logs[i].first.dist = 0;
-      logs[i].first.idx = i;
-      que.push(make_pair(i, i));
+      que.push(make_pair(i, log_t{0, i}));
     }
   }
 
   while (!que.empty()) {
-    const auto [cur, from] = que.front();
+    const auto [cur, log] = que.front();
     que.pop();
 
-    const log_t& cur_log = logs[cur].second.idx == idx_invalid
-                               ? logs[cur].first
-                               : logs[cur].second;
+    if (logs[cur].second.idx != idx_invalid) continue;
+    if (logs[cur].first.idx == idx_invalid) {
+      logs[cur].first = log;
+    } else {
+      if (logs[cur].first.idx == log.idx) continue;
+      logs[cur].second = log;
+    }
 
     for (s64 nxt : g[cur]) {
       if (logs[nxt].second.idx != idx_invalid) continue;
-      if (logs[nxt].first.idx == cur) continue;
-      log_t& nxt_log = logs[nxt].first.idx == idx_invalid ? logs[nxt].first
-                                                          : logs[nxt].second;
-      nxt_log.dist = cur_log.dist + 1;
-      nxt_log.idx = from;
-      que.push(make_pair(nxt, from));
+      que.push(make_pair(nxt, log_t{log.dist + 1, log.idx}));
     }
   }
 
