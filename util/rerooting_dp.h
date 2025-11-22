@@ -14,39 +14,35 @@ namespace rerooting_dp {
 
 using graph = std::vector<std::vector<int64_t>>;
 
-template <typename TIn, typename TOut,
-          auto MergeOutput /*TOut(TOut, TOut)*/,        //
-          auto GetOutput /*TOut(int64_t, TIn, TOut)*/,  //
-          auto GetInvalidOutput /*TOut(void)*/          //
-
+template <typename TIn, typename TOut, TOut Invalid,
+          auto MergeOutput /*TOut(TOut, TOut)*/,       //
+          auto GetOutput /*TOut(int64_t, TIn, TOut)*/  //
           >
 inline std::vector<TOut> solve(const graph& g, const std::span<TIn>& inputs) {
   static_assert(std::is_invocable_r_v<TOut, decltype(MergeOutput), TOut, TOut>);
-  static_assert(
-      std::is_invocable_r_v<TOut, decltype(GetOutput), int64_t, TIn, TOut>);
-  static_assert(std::is_invocable_r_v<TOut, decltype(GetInvalidOutput)>);
+  static_assert(std::is_invocable_r_v<TOut, decltype(GetOutput), TIn, TOut>);
 
-  const int64_t n = g.size();
+  const size_t n = g.size();
 
-  constexpr int64_t kIdx_Invalid = -1;
-  constexpr int64_t kIdx_Unset = -2;
+  constexpr int64_t kIdx_Invalid = -1LL;
+  constexpr int64_t kIdx_Unset = -2LL;
 
   struct node_t {
     int64_t parent_gidx{kIdx_Unset};
     std::vector<int64_t> child_gidxs;
     int64_t self_lidx{kIdx_Unset};
 
-    TOut out_parent{GetInvalidOutput()};
+    TOut out_parent{Invalid};
     std::vector<TOut> out_children_asc;
     std::vector<TOut> out_children_desc;
 
     TOut get_children_output(int64_t except = -1) {
       TOut ret = out_parent;
-      if (except == kIdx_Invalid) {
+      if (except != kIdx_Invalid) {
         if (except > 0) ret = MergeOutput(ret, out_children_asc[except - 1]);
         if (except < out_children_desc.size() - 1)
           ret = MergeOutput(ret, out_children_desc[except + 1]);
-      } else {
+      } else if (!out_children_asc.empty()) {
         ret = MergeOutput(ret, out_children_asc.back());
       }
       return ret;
@@ -78,8 +74,8 @@ inline std::vector<TOut> solve(const graph& g, const std::span<TIn>& inputs) {
         que.push(nxt);
       }
 
-      node_cur.out_children_asc.resize(child_num);
-      node_cur.out_children_desc.resize(child_num);
+      node_cur.out_children_asc.resize(child_num, Invalid);
+      node_cur.out_children_desc.resize(child_num, Invalid);
     }
   }
 
@@ -95,7 +91,7 @@ inline std::vector<TOut> solve(const graph& g, const std::span<TIn>& inputs) {
         const auto parent_gidx = node_cur.parent_gidx;
         const auto self_lidx = node_cur.self_lidx;
         const auto child_num = node_cur.out_children_asc.size();
-        for (int64_t i = 1; i < child_num; ++i) {
+        for (size_t i = 1; i < child_num; ++i) {
           node_cur.out_children_asc[i] = MergeOutput(
               node_cur.out_children_asc[i], node_cur.out_children_asc[i - 1]);
           node_cur.out_children_desc[child_num - 1 - i] =
@@ -106,7 +102,7 @@ inline std::vector<TOut> solve(const graph& g, const std::span<TIn>& inputs) {
           node_t& node_parent = nodes[parent_gidx];
           node_parent.out_children_asc[self_lidx] =
               node_parent.out_children_desc[self_lidx] =
-                  GetOutput(cur, inputs[cur], node_cur.get_children_output());
+                  GetOutput(inputs[cur], node_cur.get_children_output());
         }
       } else {
         opened[cur] = true;
@@ -128,7 +124,7 @@ inline std::vector<TOut> solve(const graph& g, const std::span<TIn>& inputs) {
       if (parent_gidx != kIdx_Invalid) {
         node_t& node_parent = nodes[parent_gidx];
         node_cur.out_parent =
-            GetOutput(parent_gidx, inputs[parent_gidx],
+            GetOutput(inputs[parent_gidx],
                       node_parent.get_children_output(node_cur.self_lidx));
       }
 
