@@ -57,4 +57,8 @@ int main() {
       }
     }
   }
+
+  atcoder::dsu dsu(n);
+  for (s64 i = 0; i < n; ++i) {
+  }
 }
